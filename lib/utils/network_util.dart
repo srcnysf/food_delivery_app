@@ -19,6 +19,12 @@ class NetworkUtil {
     return response;
   }
 
+  Future<Response> basicGet(String url) async {
+    Response response = await _dio.get(url,
+        options: Options(responseType: ResponseType.json));
+    return response;
+  }
+
   Future<Response> post(String url, Map<String, String> params) async {
     Response response = await _dio.post(url,
         data: params, options: Options(responseType: ResponseType.json));

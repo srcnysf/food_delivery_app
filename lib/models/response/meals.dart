@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'Meal.dart';
+import 'meal.dart';
 
 class Meals {
   final List<Meal> meals;

@@ -3,8 +3,11 @@ import 'package:food_delivery_app/models/request/category_request.dart';
 import 'package:food_delivery_app/models/request/ingredients_request.dart';
 import 'package:food_delivery_app/models/request/meal_request.dart';
 import 'package:food_delivery_app/models/request/search_request.dart';
-import 'package:food_delivery_app/models/response/categories.dart';
-import 'package:food_delivery_app/models/response/meals.dart';
+import 'package:food_delivery_app/models/response/area_list_response.dart';
+import 'package:food_delivery_app/models/response/categories_response.dart';
+import 'package:food_delivery_app/models/response/category_list_response.dart';
+import 'package:food_delivery_app/models/response/ingredient_list_response.dart';
+import 'package:food_delivery_app/models/response/meal_detail_list_response.dart';
 import 'package:food_delivery_app/services/api_service.dart';
 
 import '../locator.dart';
@@ -16,34 +19,34 @@ class Repository {
     return await _apiService.getCategories().catchError((error) => throw error);
   }
 
-  Future<Meals> getCategoryList(CategoryRequest categoryRequest) async {
+  Future<CategoryListResponse> getCategoryList(CategoryRequest categoryRequest) async {
     return await _apiService
         .getCategoryList(categoryRequest)
         .catchError((error) => throw error);
   }
 
-  Future<Meals> getAreaList(AreaRequest areaRequest) async {
+  Future<AreaListReponse> getAreaList(AreaRequest areaRequest) async {
     return await _apiService
         .getAreaList(areaRequest)
         .catchError((error) => throw error);
   }
 
-  Future<Meals> getIngredientsList(
+  Future<IngredientsListResponse> getIngredientsList(
       IngredientsRequest ingredientsRequest) async {
     return await _apiService
         .getIngredientsList(ingredientsRequest)
         .catchError((error) => throw error);
   }
 
-  Future<Meals> getMeals(MealRequest mealRequest) async {
+  Future<MealDetailListResponse> getMeals(MealRequest mealRequest) async {
     return await _apiService
         .getMealById(mealRequest)
         .catchError((error) => throw error);
   }
 
-  Future<Meals> searchMealByName(SearchRequest searchRequest) async {
+  Future<MealDetailListResponse> searchMealByName(SearchRequest searchRequest) async {
     return await _apiService
-        .searchMealByName(searchRequest)
+        .searchMealByName(searchRequest).then((value) => null)
         .catchError((error) => throw error);
   }
 }

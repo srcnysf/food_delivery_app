@@ -4,8 +4,12 @@ import 'package:food_delivery_app/models/request/category_request.dart';
 import 'package:food_delivery_app/models/request/ingredients_request.dart';
 import 'package:food_delivery_app/models/request/meal_request.dart';
 import 'package:food_delivery_app/models/request/search_request.dart';
-import 'package:food_delivery_app/models/response/categories.dart';
-import 'package:food_delivery_app/models/response/meals.dart';
+import 'package:food_delivery_app/models/response/area_list_response.dart';
+import 'package:food_delivery_app/models/response/categories_response.dart';
+import 'package:food_delivery_app/models/response/category_list_response.dart';
+import 'package:food_delivery_app/models/response/ingredient_list_response.dart';
+import 'package:food_delivery_app/models/response/meal_detail_list_response.dart';
+import 'package:food_delivery_app/models/response/meal_list_response.dart';
 import 'package:food_delivery_app/utils/network_util.dart';
 
 class ApiService {
@@ -14,97 +18,97 @@ class ApiService {
   Future<Categories> getCategories() async {
     try {
       final res = await networkUtil.get(ApiConstants.CATEGORIES.toString());
-      return Categories.fromMap(res);
+      return Categories.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;
     }
   }
 
-  Future<Meals> getMealById(MealRequest mealRequest) async {
+  Future<MealDetailListResponse> getMealById(MealRequest mealRequest) async {
     try {
       final res = await networkUtil.get(ApiConstants.LOOKUP,
           params: mealRequest.toMap());
-      return Meals.fromJson(res);
+      return MealDetailListResponse.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;
     }
   }
 
-  Future<Meals> searchMealByName(SearchRequest searchRequest) async {
+  Future<MealDetailListResponse> searchMealByName(SearchRequest searchRequest) async {
     try {
       final res = await networkUtil.get(ApiConstants.SEARCH,
           params: searchRequest.toMap());
-      return Meals.fromJson(res);
+      return MealDetailListResponse.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;
     }
   }
 
-  Future<Meals> getCategoryList(CategoryRequest categoryRequest) async {
+  Future<CategoryListResponse> getCategoryList(CategoryRequest categoryRequest) async {
     try {
       final res = await networkUtil.get(ApiConstants.LIST,
           params: categoryRequest.toMap());
-      return Meals.fromJson(res);
+      return CategoryListResponse.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;
     }
   }
 
-  Future<Meals> getAreaList(AreaRequest areaRequest) async {
+  Future<AreaListReponse> getAreaList(AreaRequest areaRequest) async {
     try {
       final res =
           await networkUtil.get(ApiConstants.LIST, params: areaRequest.toMap());
-      return Meals.fromMap(res);
+      return AreaListReponse.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;
     }
   }
 
-  Future<Meals> getIngredientsList(
+  Future<IngredientsListResponse> getIngredientsList(
       IngredientsRequest ingredientsRequest) async {
     try {
       final res = await networkUtil.get(ApiConstants.LIST,
           params: ingredientsRequest.toMap());
-      return Meals.fromJson(res);
+      return IngredientsListResponse.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;
     }
   }
 
-  Future<Meals> filterByCategory(CategoryRequest categoryRequest) async {
+  Future<MealListResponse> filterByCategory(CategoryRequest categoryRequest) async {
     try {
       final res = await networkUtil.get(ApiConstants.FILTER_BY,
           params: categoryRequest.toMap());
-      return Meals.fromJson(res);
+      return MealListResponse.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;
     }
   }
 
-  Future<Meals> filterByArea(AreaRequest areaRequest) async {
+  Future<MealListResponse> filterByArea(AreaRequest areaRequest) async {
     try {
       final res = await networkUtil.get(ApiConstants.FILTER_BY,
           params: areaRequest.toMap());
-      return Meals.fromJson(res);
+      return MealListResponse.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;
     }
   }
 
-  Future<Meals> filterByIngredients(
+  Future<MealListResponse> filterByIngredients(
       IngredientsRequest ingredientsRequest) async {
     try {
       final res = await networkUtil.get(ApiConstants.FILTER_BY,
           params: ingredientsRequest.toMap());
-      return Meals.fromJson(res);
+      return MealListResponse.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;

@@ -31,6 +31,9 @@ dependencies:
   provider: ^4.0.1
   #di
   get_it: ^4.0.0
+  #ui
+  flutter_splash: ^1.0.1
+  auto_route: ^0.6.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -41,6 +44,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner:
+  auto_route_generator: ^0.6.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -54,9 +58,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

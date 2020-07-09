@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/locator.dart';
-
-import 'ui/home/home.dart';
+import 'package:food_delivery_app/router.gr.dart';
 
 void main() {
   setupLocator();
@@ -13,8 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(),
-      home: HomeView(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Constants.primaryColor,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Constants.primaryColor,
+      ),
+      initialRoute: Routes.splashView,
+      onGenerateRoute: Router(),
     );
   }
 }

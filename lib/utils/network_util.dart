@@ -13,7 +13,7 @@ class NetworkUtil {
     _dio.interceptors.add(LogInterceptor());
   }
 
-  Future<dynamic> get(String url, {Map<String, String> params}) async {
+  Future<dynamic> get(String url, {Map<String, dynamic> params}) async {
     try {
       Response response = await _dio.get(url,
           queryParameters: params,

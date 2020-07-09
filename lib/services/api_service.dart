@@ -13,8 +13,8 @@ class ApiService {
 
   Future<Categories> getCategories() async {
     try {
-      final res = await networkUtil.get(ApiConstants.CATEGORIES);
-      return Categories.fromJson(res);
+      final res = await networkUtil.get(ApiConstants.CATEGORIES.toString());
+      return Categories.fromMap(res);
     } catch (e) {
       print(e.toString());
       throw e;
@@ -58,7 +58,7 @@ class ApiService {
     try {
       final res =
           await networkUtil.get(ApiConstants.LIST, params: areaRequest.toMap());
-      return Meals.fromJson(res);
+      return Meals.fromMap(res);
     } catch (e) {
       print(e.toString());
       throw e;

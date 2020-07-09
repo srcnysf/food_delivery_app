@@ -7,8 +7,10 @@ import 'package:food_delivery_app/models/response/categories.dart';
 import 'package:food_delivery_app/models/response/meals.dart';
 import 'package:food_delivery_app/services/api_service.dart';
 
+import '../locator.dart';
+
 class Repository {
-  ApiService _apiService;
+  final ApiService _apiService = locator<ApiService>();
 
   Future<Categories> getCategories() async {
     return await _apiService.getCategories().catchError((error) => throw error);

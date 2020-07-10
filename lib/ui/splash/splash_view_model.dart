@@ -4,6 +4,6 @@ import '../../router.gr.dart';
 
 class SplashViewModel extends AppBaseViewModel {
   Future handleStartUpLogic() async {
-    return await new Future<String>.delayed(Duration(seconds: 3), () => Routes.homeView);
+    return await new Future<String>.delayed(Duration(seconds: 3), () => Routes.mainView);
   }
 }

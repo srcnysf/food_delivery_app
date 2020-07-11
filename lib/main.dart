@@ -14,13 +14,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Constants.primaryColor,
-      ),
+          brightness: Brightness.light,
+          primaryColor: Constants.primaryColor,
+          bottomNavigationBarTheme:
+              BottomNavigationBarThemeData(backgroundColor: Colors.white),
+          cardColor: Colors.white),
       darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Constants.primaryColor,
-      ),
+          brightness: Brightness.dark,
+          primaryColor: Constants.primaryColor,
+          scaffoldBackgroundColor: Constants.backroundColor,
+          cardColor: Constants.boxItemGrey),
       initialRoute: Routes.splashView,
       onGenerateRoute: Router(),
     );

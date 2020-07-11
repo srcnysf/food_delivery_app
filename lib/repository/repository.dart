@@ -8,6 +8,7 @@ import 'package:food_delivery_app/models/response/categories_response.dart';
 import 'package:food_delivery_app/models/response/category_list_response.dart';
 import 'package:food_delivery_app/models/response/ingredient_list_response.dart';
 import 'package:food_delivery_app/models/response/meal_detail_list_response.dart';
+import 'package:food_delivery_app/models/response/meal_list_response.dart';
 import 'package:food_delivery_app/services/api_service.dart';
 
 import '../locator.dart';
@@ -19,7 +20,8 @@ class Repository {
     return await _apiService.getCategories().catchError((error) => throw error);
   }
 
-  Future<CategoryListResponse> getCategoryList(CategoryRequest categoryRequest) async {
+  Future<CategoryListResponse> getCategoryList(
+      CategoryRequest categoryRequest) async {
     return await _apiService
         .getCategoryList(categoryRequest)
         .catchError((error) => throw error);
@@ -38,15 +40,37 @@ class Repository {
         .catchError((error) => throw error);
   }
 
+  Future<MealListResponse> getMealsByCategory(
+      CategoryRequest categoryRequest) async {
+    return await _apiService
+        .filterByCategory(categoryRequest)
+        .catchError((error) => throw error);
+  }
+
+  Future<MealListResponse> getMealsByArea(AreaRequest areaRequest) async {
+    return await _apiService
+        .filterByArea(areaRequest)
+        .catchError((error) => throw error);
+  }
+
+  Future<MealListResponse> getMealsByIngredients(
+      IngredientsRequest ingredientsRequest) async {
+    return await _apiService
+        .filterByIngredients(ingredientsRequest)
+        .catchError((error) => throw error);
+  }
+
   Future<MealDetailListResponse> getMeals(MealRequest mealRequest) async {
     return await _apiService
         .getMealById(mealRequest)
         .catchError((error) => throw error);
   }
 
-  Future<MealDetailListResponse> searchMealByName(SearchRequest searchRequest) async {
+  Future<MealDetailListResponse> searchMealByName(
+      SearchRequest searchRequest) async {
     return await _apiService
-        .searchMealByName(searchRequest).then((value) => null)
+        .searchMealByName(searchRequest)
+        .then((value) => null)
         .catchError((error) => throw error);
   }
 }

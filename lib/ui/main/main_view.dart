@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/ui/home/home_view.dart';
@@ -31,7 +32,21 @@ class _MainViewState extends State<MainView> {
           },
           child: Scaffold(
             extendBody: true,
-            body: getViewForIndex(model.currentTabIndex),
+            body: PageTransitionSwitcher(
+              duration: Duration(milliseconds: 500),
+              transitionBuilder: (
+                Widget child,
+                Animation<double> animation,
+                Animation<double> secondaryAnimation,
+              ) {
+                return FadeThroughTransition(
+                  animation: animation,
+                  secondaryAnimation: secondaryAnimation,
+                  child: child,
+                );
+              },
+              child: getViewForIndex(model.currentTabIndex),
+            ),
             bottomNavigationBar: ClipRRect(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30),
@@ -40,7 +55,6 @@ class _MainViewState extends State<MainView> {
               child: BottomNavigationBar(
                 elevation: 0,
                 type: BottomNavigationBarType.fixed,
-                backgroundColor: Colors.white,
                 selectedItemColor: Constants.primaryColor,
                 unselectedItemColor: Colors.grey,
                 selectedFontSize: 13,

@@ -5,6 +5,7 @@ import 'package:food_delivery_app/models/response/meal_response.dart';
 import 'package:smart_select/smart_select.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../router.gr.dart';
 import 'detail_view_model.dart';
 
 class DetailView extends StatelessWidget {
@@ -237,7 +238,12 @@ class DetailView extends StatelessWidget {
                                               toastDuration:
                                                   Duration(seconds: 2),
                                             );
-                                            Navigator.pop(context);
+                                            // Navigator.pop(context);
+                                            Navigator.pushNamedAndRemoveUntil(
+                                                context,
+                                                Routes.mainView,
+                                                (Route<dynamic> route) =>
+                                                    false);
                                           }
                                         },
                                         child: Container(

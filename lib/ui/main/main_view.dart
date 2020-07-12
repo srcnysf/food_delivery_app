@@ -28,7 +28,7 @@ class _MainViewState extends State<MainView> {
       builder: (context, model, child) => WillPopScope(
           onWillPop: () async {
             if (model.currentTabIndex != 0) {
-              getViewForIndex(0);
+              model.setTabIndex(0);
               return false;
             } else
               return true;

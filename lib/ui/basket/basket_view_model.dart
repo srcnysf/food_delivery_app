@@ -42,13 +42,10 @@ class BasketViewModel extends AppBaseViewModel {
       var meal = basket.getAt(i) as Meal;
       orders.put(meal.id, meal);
     }
-    for (int i = 0; i < basket.length; i++) {
-      var meal = basket.getAt(i) as Meal;
-      basket.delete(meal.id);
-    }
-    repository.setOrders(orders);
-    repository.setBasket(basket);
-    setBusy(false);
+    await repository.setOrders(orders);
+    basket.clear();
+    await repository.setBasket(basket);
     notifyListeners();
+    setBusy(false);
   }
 }

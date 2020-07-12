@@ -67,8 +67,10 @@ class BasketView extends StatelessWidget {
                                 color: Constants.primaryColor,
                                 onPressed: () {
                                   model.setOrder();
-                                  Navigator.pushNamed(
-                                      context, Routes.ordersView);
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      Routes.mainView,
+                                      (Route<dynamic> route) => false);
                                 },
                                 child: Container(
                                     height: 50,

@@ -7,5 +7,6 @@ class OrdersViewModel extends AppBaseViewModel {
   init() async {
     await Hive.openBox('orders');
     repository.setOrders(Hive.box('orders'));
+    notifyListeners();
   }
 }

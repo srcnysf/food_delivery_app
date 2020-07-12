@@ -29,13 +29,8 @@ class HomeView extends StatelessWidget {
             : model.errorMessage.isNotEmpty
                 ? Center(child: Text(model.modelError.toString()))
                 : Scaffold(
-                    endDrawer: Drawer(
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                      ),
-                    ),
                     appBar: AppBar(
+                      automaticallyImplyLeading: false,
                       title: Text(
                         "Food Delivery App",
                         style: TextStyle(color: Constants.titleColor),

@@ -28,7 +28,7 @@ class HomeViewModel extends AppBaseViewModel {
       this.categoryList = categories;
       notifyListeners();
     }).catchError((error) {
-      errorMessage = NetworkErrorUtil.handleError(error);
+      setError(NetworkErrorUtil.handleError(error));
     });
   }
 

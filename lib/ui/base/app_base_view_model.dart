@@ -5,6 +5,7 @@ import 'package:stacked/stacked.dart';
 import '../../locator.dart';
 
 class AppBaseViewModel extends BaseViewModel {
+  
   final Repository repository = locator<Repository>();
   String errorMessage = '';
 }

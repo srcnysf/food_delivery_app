@@ -60,7 +60,7 @@ class Repository {
         .catchError((error) => throw error);
   }
 
-  Future<MealDetailListResponse> getMeals(MealRequest mealRequest) async {
+  Future<MealDetailListResponse> getMeal(MealRequest mealRequest) async {
     return await _apiService
         .getMealById(mealRequest)
         .catchError((error) => throw error);

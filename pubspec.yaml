@@ -35,7 +35,7 @@ dependencies:
   flutter_splash: ^1.0.1
   auto_route: ^0.6.1
   animations: ^1.1.1
-
+  smart_select: ^3.0.3
 
 
   # The following adds the Cupertino Icons font to your application.

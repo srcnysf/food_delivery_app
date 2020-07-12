@@ -89,7 +89,6 @@ class Repository {
       SearchRequest searchRequest) async {
     return await _apiService
         .searchMealByName(searchRequest)
-        .then((value) => null)
         .catchError((error) => throw error);
   }
 }

@@ -101,8 +101,12 @@ class HomeView extends StatelessWidget {
                                         const Duration(milliseconds: 400),
                                     openBuilder: (context, action) {
                                       return DetailView(
-                                          mealResponse:
-                                              model.mealList.meals[index]);
+                                          id: model
+                                              .mealList.meals[index].idMeal,
+                                          name: model
+                                              .mealList.meals[index].strMeal,
+                                          url: model.mealList.meals[index]
+                                              .strMealThumb);
                                     },
                                     closedBuilder: (context, action) {
                                       return MealListItem(

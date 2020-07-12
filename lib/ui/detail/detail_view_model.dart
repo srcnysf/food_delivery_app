@@ -26,6 +26,8 @@ class DetailViewModel extends AppBaseViewModel {
     setBusy(true);
     await Hive.openBox('basket');
     repository.setBasket(Hive.box('basket'));
+    await Hive.openBox('favoured');
+    repository.setFavouredMeals(Hive.box('favoured'));
     await getCategories(id);
     setBusy(false);
   }
@@ -64,6 +66,19 @@ class DetailViewModel extends AppBaseViewModel {
 
   setTime(val) {
     time = val;
+    notifyListeners();
+  }
+
+  setFavourite(MealDetailResponse mMeal) {
+    if (favorite.containsKey(mMeal.idMeal)) {
+      favorite.delete(mMeal.idMeal);
+    } else {
+      Meal meal = new Meal();
+      meal.id = mMeal.idMeal;
+      meal.name = mMeal.strMeal;
+      meal.url = mMeal.strMealThumb;
+      favorite.put(mMeal.idMeal, meal);
+    }
     notifyListeners();
   }
 

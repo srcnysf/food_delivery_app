@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/models/response/meal_response.dart';
-import 'package:food_delivery_app/router.gr.dart';
 import 'package:smart_select/smart_select.dart';
 import 'package:stacked/stacked.dart';
 
 import 'detail_view_model.dart';
 
 class DetailView extends StatelessWidget {
-  final MealResponse mealResponse;
-  const DetailView({Key key, this.mealResponse}) : super(key: key);
+  final String url;
+  final String name;
+  final String id;
+  const DetailView({Key key, this.url, this.name, this.id}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     FlutterToast flutterToast = FlutterToast(context);
 
     return ViewModelBuilder<DetailViewModel>.reactive(
         viewModelBuilder: () => DetailViewModel(),
-        onModelReady: (model) => model.initialize(mealResponse.idMeal),
+        onModelReady: (model) => model.initialize(id),
         builder: (context, model, widget) => GestureDetector(
               onTap: () {
                 FocusScope.of(context).unfocus();
@@ -27,16 +28,30 @@ class DetailView extends StatelessWidget {
                 body: CustomScrollView(
                   slivers: [
                     SliverAppBar(
+                      actions: [
+                        model.mealList != null
+                            ? IconButton(
+                                icon: model.favorite.containsKey(
+                                        model.mealList.meals.first.idMeal)
+                                    ? Icon(Icons.favorite)
+                                    : Icon(Icons.favorite_border),
+                                onPressed: () {
+                                  model
+                                      .setFavourite(model.mealList.meals.first);
+                                },
+                              )
+                            : Container()
+                      ],
                       expandedHeight: 300,
                       pinned: true,
                       floating: false,
                       flexibleSpace: FlexibleSpaceBar(
                         title: Text(
-                          mealResponse.strMeal,
+                          name,
                           style: TextStyle(color: Constants.titleColor),
                         ),
                         background: Hero(
-                            tag: mealResponse.strMealThumb,
+                            tag: url,
                             child: ShaderMask(
                               shaderCallback: (Rect bounds) {
                                 return LinearGradient(
@@ -47,7 +62,7 @@ class DetailView extends StatelessWidget {
                                 ).createShader(bounds);
                               },
                               child: Image.network(
-                                mealResponse.strMealThumb,
+                                url,
                                 fit: BoxFit.fitWidth,
                               ),
                             )),

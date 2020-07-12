@@ -21,7 +21,7 @@ class OrdersView extends StatelessWidget {
                     style: TextStyle(color: Constants.titleColor),
                   ),
                 ),
-                body: model.orders.length == null
+                body: model.orders == null
                     ? Center(
                         child: Text("You have no Orders"),
                       )

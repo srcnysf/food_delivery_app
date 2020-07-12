@@ -9,6 +9,7 @@ class AppBaseViewModel extends BaseViewModel {
   final Repository repository = locator<Repository>();
   String errorMessage = '';
   Box get basket => repository.basketBox;
+  Box get favorite => repository.favouredMealsBox;
 
   Future openHive() async {
     await Hive.openBox('basket');

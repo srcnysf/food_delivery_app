@@ -1,30 +1,30 @@
 import 'dart:convert';
 
 class SearchRequest {
-  String f;
+  String s;
   SearchRequest({
-    this.f,
+    this.s,
   });
 
   SearchRequest copyWith({
-    String f,
+    String s,
   }) {
     return SearchRequest(
-      f: f ?? this.f,
+      s: s ?? this.s,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'f': f,
+      's': s,
     };
   }
 
   static SearchRequest fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
-  
+
     return SearchRequest(
-      f: map['f'],
+      s: map['s'],
     );
   }
 
@@ -33,16 +33,15 @@ class SearchRequest {
   static SearchRequest fromJson(String source) => fromMap(json.decode(source));
 
   @override
-  String toString() => 'SearchRequest(f: $f)';
+  String toString() => 'SearchRequest(s: $s)';
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
-  
-    return o is SearchRequest &&
-      o.f == f;
+
+    return o is SearchRequest && o.s == s;
   }
 
   @override
-  int get hashCode => f.hashCode;
+  int get hashCode => s.hashCode;
 }

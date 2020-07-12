@@ -8,17 +8,20 @@ import '../../locator.dart';
 class AppBaseViewModel extends BaseViewModel {
   final Repository repository = locator<Repository>();
   String errorMessage = '';
+  Box get basket => repository.basketBox;
 
   Future openHive() async {
-    await Hive.openBox('meals');
+    await Hive.openBox('basket');
     await Hive.openBox('orders');
+    await Hive.openBox('favoured');
     return this;
   }
 
   @override
   Future<void> dispose() async {
-    if (Hive.box('meals').isOpen) Hive.box('meals').compact();
+    if (Hive.box('basket').isOpen) Hive.box('basket').compact();
     if (Hive.box('orders').isOpen) Hive.box('orders').compact();
+    if (Hive.box('favoured').isOpen) Hive.box('favoured').compact();
     super.dispose();
   }
 }

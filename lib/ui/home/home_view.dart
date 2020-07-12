@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
+import 'package:food_delivery_app/router.gr.dart';
 import 'package:food_delivery_app/ui/detail/detail_view.dart';
 import 'package:food_delivery_app/ui/home/home_view_model.dart';
 import 'package:food_delivery_app/widgets/area_item.dart';
@@ -19,7 +20,7 @@ class HomeView extends StatelessWidget {
         disposeViewModel: false,
         //calls onModelReady once at first time.
         //To avoid initialize onModelReady every time when comeback to view from bottom navigation
-        fireOnModelReadyOnce: true,
+        fireOnModelReadyOnce: false,
         onModelReady: (model) => model.initialize(),
         builder: (context, model, widget) => model.isBusy
             ? Center(child: CircularProgressIndicator())
@@ -38,11 +39,37 @@ class HomeView extends StatelessWidget {
                         style: TextStyle(color: Constants.titleColor),
                       ),
                       actions: [
-                        IconButton(
-                            icon: Icon(Icons.filter_list),
-                            onPressed: () {
-                              Scaffold.of(context).openEndDrawer();
-                            })
+                        Stack(
+                          children: [
+                            if (model.basket.length > 0)
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    height: 20,
+                                    width: 20,
+                                    decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius:
+                                            BorderRadius.circular(45)),
+                                    child: Center(
+                                      child: Text(
+                                        model.repository.basketBox.length
+                                            .toString(),
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            IconButton(
+                                icon: Icon(Icons.shopping_basket),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, Routes.basketView);
+                                }),
+                          ],
+                        )
                       ],
                     ),
                     body: SingleChildScrollView(
@@ -74,8 +101,8 @@ class HomeView extends StatelessWidget {
                                         const Duration(milliseconds: 400),
                                     openBuilder: (context, action) {
                                       return DetailView(
-                                          mealResponse: model
-                                              .mealList.meals[index]);
+                                          mealResponse:
+                                              model.mealList.meals[index]);
                                     },
                                     closedBuilder: (context, action) {
                                       return MealListItem(

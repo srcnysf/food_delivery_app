@@ -1,7 +1,10 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
+import 'package:food_delivery_app/ui/favoured/favoured_view.dart';
 import 'package:food_delivery_app/ui/home/home_view.dart';
+import 'package:food_delivery_app/ui/orders/orders_view.dart';
+import 'package:food_delivery_app/ui/search/search_view.dart';
 import 'package:food_delivery_app/widgets/tab_item.dart';
 import 'package:stacked/stacked.dart';
 
@@ -80,13 +83,13 @@ class _MainViewState extends State<MainView> {
           _viewCache[index] = HomeView();
           break;
         case 1:
-          _viewCache[index] = HomeView();
+          _viewCache[index] = SearchView();
           break;
         case 2:
-          _viewCache[index] = HomeView();
+          _viewCache[index] = OrdersView();
           break;
         case 3:
-          _viewCache[index] = Container();
+          _viewCache[index] = FavouredView();
           break;
       }
     }

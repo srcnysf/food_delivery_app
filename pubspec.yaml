@@ -36,6 +36,7 @@ dependencies:
   auto_route: ^0.6.1
   animations: ^1.1.1
   smart_select: ^3.0.3
+  fluttertoast: ^6.0.0
   #local_db
   hive: ^1.4.1+1
   hive_flutter:

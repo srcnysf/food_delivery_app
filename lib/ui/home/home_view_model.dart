@@ -7,6 +7,7 @@ import 'package:food_delivery_app/models/response/ingredient_list_response.dart'
 import 'package:food_delivery_app/models/response/meal_list_response.dart';
 import 'package:food_delivery_app/ui/base/app_base_view_model.dart';
 import 'package:food_delivery_app/utils/network_error_util.dart';
+import 'package:hive/hive.dart';
 
 class HomeViewModel extends AppBaseViewModel {
   Categories categoryList;
@@ -16,10 +17,15 @@ class HomeViewModel extends AppBaseViewModel {
 
   void initialize() async {
     setBusy(true);
-    await getCategories();
-    await getAreaList("American");
-    await getMealsByArea("American");
-    await getIngredientsList("list");
+    await Hive.openBox('basket');
+    repository.setBasket(Hive.box('basket'));
+    if (mealList == null) {
+      await getCategories();
+      await getAreaList("American");
+      await getMealsByArea("American");
+      await getIngredientsList("list");
+    }
+    notifyListeners();
     setBusy(false);
   }
 
@@ -44,7 +50,9 @@ class HomeViewModel extends AppBaseViewModel {
 
   getIngredientsList(String ingredient) async {
     var ingredientsRequest = IngredientsRequest()..i = ingredient;
-    await repository.getIngredientsList(ingredientsRequest).then((ingredientList) {
+    await repository
+        .getIngredientsList(ingredientsRequest)
+        .then((ingredientList) {
       this.ingredientList = ingredientList;
       notifyListeners();
     }).catchError((error) {

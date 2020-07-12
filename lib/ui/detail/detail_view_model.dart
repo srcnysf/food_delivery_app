@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:food_delivery_app/models/meal.dart';
 import 'package:food_delivery_app/models/request/meal_request.dart';
 import 'package:food_delivery_app/models/response/meal_detail_list_response.dart';
 import 'package:food_delivery_app/models/response/meal_detail_response.dart';
@@ -9,23 +11,21 @@ import 'package:food_delivery_app/utils/network_error_util.dart';
 import 'package:hive/hive.dart';
 
 class DetailViewModel extends AppBaseViewModel {
-  TextEditingController noteController;
+  TextEditingController noteController = new TextEditingController();
   FocusNode focusNode = new FocusNode();
 
   MealDetailListResponse mealList;
-  List<dynamic> selectedAddsOnList = [];
-  List<dynamic> selectedIngredients = [];
-  String time;
+  List<String> selectedAddsOnList;
+  List<String> selectedIngredients = new List();
+  String time = "In 1 Hour";
   Random random = new Random();
 
   int price = 10;
 
-  Box get orders => repository.ordersBox;
-
   void initialize(String id) async {
     setBusy(true);
-    await Hive.openBox('ordersBox');
-    await repository.setOrders(Hive.box('ordersBox'));
+    await Hive.openBox('basket');
+    repository.setBasket(Hive.box('basket'));
     await getCategories(id);
     setBusy(false);
   }
@@ -52,15 +52,13 @@ class DetailViewModel extends AppBaseViewModel {
 
   setSelectedAddsOnList(List val) {
     price = 10;
-    selectedAddsOnList = val;
-    selectedAddsOnList.forEach((element) {
-      price += element;
-    });
+    selectedAddsOnList = val.cast<String>();
+    price += val.length;
     notifyListeners();
   }
 
   setSelectedIngredients(List val) {
-    selectedIngredients = val;
+    selectedIngredients = val.cast<String>();
     notifyListeners();
   }
 
@@ -69,10 +67,21 @@ class DetailViewModel extends AppBaseViewModel {
     notifyListeners();
   }
 
-  void addToBasket(MealDetailResponse meal) {
-    orders.put("${meal.idMeal}", meal);
-    repository.setOrders(orders);
+  addToBasket(MealDetailResponse mMeal) {
+    Meal meal = new Meal();
+    meal.id = mMeal.idMeal;
+    meal.name = mMeal.strMeal;
+    meal.url = mMeal.strMealThumb;
+    meal.price = price;
+    meal.ingrediendsList = selectedIngredients;
+    meal.addsOnList = selectedAddsOnList;
+    meal.time = time;
+    meal.desc = noteController.text;
+    meal.count = 1;
 
-    print(orders.length);
+    basket.put("${mMeal.idMeal}", meal);
+    repository.setBasket(basket);
+    notifyListeners();
+    print(basket.length);
   }
 }

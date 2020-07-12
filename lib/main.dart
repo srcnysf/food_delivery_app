@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/locator.dart';
-import 'package:food_delivery_app/models/response/meal_detail_response.dart';
 import 'package:food_delivery_app/router.gr.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+
+import 'models/meal.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
-  Hive.registerAdapter(MealDetailResponseAdapter());
+  Hive.registerAdapter(MealAdapter());
   setupLocator();
   runApp(MyApp());
 }

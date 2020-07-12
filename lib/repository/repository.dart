@@ -23,6 +23,18 @@ class Repository {
     this._ordersBox = orders;
   }
 
+  Box _basketBox;
+  Box get basketBox => _basketBox;
+  setBasket(Box orders) {
+    this._basketBox = orders;
+  }
+
+  Box _favouredMealsBox;
+  Box get favouredMealsBox => _favouredMealsBox;
+  setFavouredMeals(Box meals) {
+    this._favouredMealsBox = meals;
+  }
+
   Future<Categories> getCategories() async {
     return await _apiService.getCategories().catchError((error) => throw error);
   }

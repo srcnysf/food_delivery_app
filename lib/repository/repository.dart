@@ -10,11 +10,18 @@ import 'package:food_delivery_app/models/response/ingredient_list_response.dart'
 import 'package:food_delivery_app/models/response/meal_detail_list_response.dart';
 import 'package:food_delivery_app/models/response/meal_list_response.dart';
 import 'package:food_delivery_app/services/api_service.dart';
+import 'package:hive/hive.dart';
 
 import '../locator.dart';
 
 class Repository {
   final ApiService _apiService = locator<ApiService>();
+
+  Box _ordersBox;
+  Box get ordersBox => _ordersBox;
+  setOrders(Box orders) {
+    this._ordersBox = orders;
+  }
 
   Future<Categories> getCategories() async {
     return await _apiService.getCategories().catchError((error) => throw error);

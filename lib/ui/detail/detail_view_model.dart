@@ -1,27 +1,31 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/models/request/meal_request.dart';
 import 'package:food_delivery_app/models/response/meal_detail_list_response.dart';
 import 'package:food_delivery_app/models/response/meal_detail_response.dart';
 import 'package:food_delivery_app/ui/base/app_base_view_model.dart';
 import 'package:food_delivery_app/utils/network_error_util.dart';
+import 'package:hive/hive.dart';
 
 class DetailViewModel extends AppBaseViewModel {
   TextEditingController noteController;
   FocusNode focusNode = new FocusNode();
 
   MealDetailListResponse mealList;
-  List<Map<String, String>> addsOnList = [
-    {"value": "1", "title": "Mayoniese"},
-    {"value": "2", "title": "Soy Sauce"},
-    {"value": "3", "title": "Cheddar Cheese"},
-    {"value": "0", "title": "Salt"}
-  ];
   List<dynamic> selectedAddsOnList = [];
   List<dynamic> selectedIngredients = [];
   String time;
+  Random random = new Random();
+
+  int price = 10;
+
+  Box get orders => repository.ordersBox;
 
   void initialize(String id) async {
     setBusy(true);
+    await Hive.openBox('ordersBox');
+    await repository.setOrders(Hive.box('ordersBox'));
     await getCategories(id);
     setBusy(false);
   }
@@ -47,7 +51,11 @@ class DetailViewModel extends AppBaseViewModel {
   }
 
   setSelectedAddsOnList(List val) {
+    price = 10;
     selectedAddsOnList = val;
+    selectedAddsOnList.forEach((element) {
+      price += element;
+    });
     notifyListeners();
   }
 
@@ -61,5 +69,10 @@ class DetailViewModel extends AppBaseViewModel {
     notifyListeners();
   }
 
-  void addToBasket(MealDetailResponse first) {}
+  void addToBasket(MealDetailResponse meal) {
+    orders.put("${meal.idMeal}", meal);
+    repository.setOrders(orders);
+
+    print(orders.length);
+  }
 }

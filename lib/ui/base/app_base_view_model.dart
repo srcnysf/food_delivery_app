@@ -11,12 +11,14 @@ class AppBaseViewModel extends BaseViewModel {
 
   Future openHive() async {
     await Hive.openBox('meals');
+    await Hive.openBox('orders');
     return this;
   }
 
   @override
   Future<void> dispose() async {
     if (Hive.box('meals').isOpen) Hive.box('meals').compact();
+    if (Hive.box('orders').isOpen) Hive.box('orders').compact();
     super.dispose();
   }
 }

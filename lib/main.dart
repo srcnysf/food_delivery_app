@@ -7,10 +7,11 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
 Future<void> main() async {
-  setupLocator();
+  WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
   Hive.registerAdapter(MealDetailResponseAdapter());
+  setupLocator();
   runApp(MyApp());
 }
 

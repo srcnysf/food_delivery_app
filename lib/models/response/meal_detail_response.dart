@@ -5,7 +5,7 @@ part 'meal_detail_response.g.dart';
 
 @HiveType(typeId: 0)
 @JsonSerializable()
-class MealDetailResponse extends HiveObject {
+class MealDetailResponse {
   @HiveField(0)
   final String idMeal;
   @HiveField(1)

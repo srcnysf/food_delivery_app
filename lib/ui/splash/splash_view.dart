@@ -8,14 +8,19 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.reactive(
-        viewModelBuilder: () =>SplashViewModel(),
+        viewModelBuilder: () => SplashViewModel(),
+        onModelReady: (model) => model.openHive(),
         builder: (context, model, widget) {
           return Splash(
-                  navigateAfterFuture: model.handleStartUpLogic,
-                  image: Image.asset('assets/logo.png'),
-                  title: Text("Food Delyvery App",style: TextStyle(fontSize: 40, color: Colors.white, fontWeight: FontWeight.w900)),
-                  photoSize: 100.0,
-                  loaderColor: Constants.primaryColor);
+              navigateAfterFuture: model.handleStartUpLogic,
+              image: Image.asset('assets/logo.png'),
+              title: Text("Food Delyvery App",
+                  style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w900)),
+              photoSize: 100.0,
+              loaderColor: Constants.primaryColor);
         });
   }
 }

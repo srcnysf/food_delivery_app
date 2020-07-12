@@ -124,12 +124,20 @@ class DetailView extends StatelessWidget {
                                           style: SmartSelectModalStyle()),
                                       value: model.selectedAddsOnList,
                                       title: "Adds On",
-                                      options: SmartSelectOption.listFrom<
-                                          String, Map<String, String>>(
-                                        source: model.addsOnList,
-                                        value: (index, item) => item['value'],
-                                        title: (index, item) => item['title'],
-                                      ),
+                                      options: <SmartSelectOption<int>>[
+                                        SmartSelectOption<int>(
+                                            value: 1,
+                                            title: "Mayoniese +1\$"),
+                                        SmartSelectOption<int>(
+                                            value: 2,
+                                            title: "Soy Sauce +2\$"),
+                                        SmartSelectOption<int>(
+                                            value: 3,
+                                            title: "Cheddar Cheese +3\$"),
+                                            SmartSelectOption<int>(
+                                            value: 0,
+                                            title: "Salt"),
+                                      ],
                                       choiceConfig: SmartSelectChoiceConfig(
                                           style: SmartSelectChoiceStyle(
                                         activeColor: Constants.primaryColor,
@@ -210,7 +218,7 @@ class DetailView extends StatelessWidget {
                                                   .width /
                                               2,
                                           child: Center(
-                                              child: Text("Add to Basket"))),
+                                              child: Text("Add to Basket ${model.price}\$"))),
                                     ),
                                   )
                                 ],

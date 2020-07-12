@@ -14,6 +14,8 @@ import 'package:food_delivery_app/ui/basket/basket_view.dart';
 import 'package:food_delivery_app/ui/orders/orders_view.dart';
 import 'package:food_delivery_app/ui/search/search_view.dart';
 import 'package:food_delivery_app/ui/favoured/favoured_view.dart';
+import 'package:food_delivery_app/ui/near_you/near_view.dart';
+import 'package:food_delivery_app/ui/categories/categories_view.dart';
 
 class Routes {
   static const String splashView = '/';
@@ -23,6 +25,8 @@ class Routes {
   static const String ordersView = '/orders-view';
   static const String searchView = '/search-view';
   static const String favouredView = '/favoured-view';
+  static const String nearView = '/near-view';
+  static const String categoriesView = '/categories-view';
   static const all = <String>{
     splashView,
     mainView,
@@ -31,6 +35,8 @@ class Routes {
     ordersView,
     searchView,
     favouredView,
+    nearView,
+    categoriesView,
   };
 }
 
@@ -45,6 +51,8 @@ class Router extends RouterBase {
     RouteDef(Routes.ordersView, page: OrdersView),
     RouteDef(Routes.searchView, page: SearchView),
     RouteDef(Routes.favouredView, page: FavouredView),
+    RouteDef(Routes.nearView, page: NearView),
+    RouteDef(Routes.categoriesView, page: CategoriesView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -90,6 +98,18 @@ class Router extends RouterBase {
     FavouredView: (RouteData data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => FavouredView(),
+        settings: data,
+      );
+    },
+    NearView: (RouteData data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => NearView(),
+        settings: data,
+      );
+    },
+    CategoriesView: (RouteData data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => CategoriesView(),
         settings: data,
       );
     },

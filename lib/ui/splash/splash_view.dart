@@ -17,9 +17,10 @@ class SplashView extends StatelessWidget {
               title: Text("Food Delyvery App",
                   style: TextStyle(
                       fontSize: 40,
-                      color: Colors.white,
+                      color: Constants.primaryColor,
                       fontWeight: FontWeight.w900)),
               photoSize: 100.0,
+              backgroundColor: Constants.backroundColor,
               loaderColor: Constants.primaryColor);
         });
   }

@@ -2,7 +2,9 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/router.gr.dart';
-import 'package:food_delivery_app/ui/detail/detail_view.dart';
+import 'package:food_delivery_app/ui/area/area_view.dart';
+import 'package:food_delivery_app/ui/category_detail/category_detail.dart';
+import 'package:food_delivery_app/ui/meal_detail/detail_view.dart';
 import 'package:food_delivery_app/ui/home/home_view_model.dart';
 import 'package:food_delivery_app/widgets/area_item.dart';
 import 'package:food_delivery_app/widgets/category_item.dart';
@@ -25,7 +27,7 @@ class HomeView extends StatelessWidget {
         builder: (context, model, widget) => model.isBusy
             ? Center(child: CircularProgressIndicator())
             : model.errorMessage.isNotEmpty
-                ? Center(child: Text("${model.errorMessage}"))
+                ? Center(child: Text(model.modelError.toString()))
                 : Scaffold(
                     endDrawer: Drawer(
                       child: Container(
@@ -79,7 +81,9 @@ class HomeView extends StatelessWidget {
                           children: [
                             SectionHeader(
                               title: "Near You",
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, Routes.nearView);
+                              },
                             ),
                             Container(
                               height: 350,
@@ -121,7 +125,10 @@ class HomeView extends StatelessWidget {
                             ),
                             SectionHeader(
                               title: "Categories",
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, Routes.categoriesView);
+                              },
                             ),
                             Container(
                               height: 350,
@@ -133,22 +140,52 @@ class HomeView extends StatelessWidget {
                                         : model.categoryList.categories.length,
                                 padding: EdgeInsets.all(4),
                                 itemBuilder: (context, index) {
-                                  return CategoryListItem(
-                                      name: model.categoryList.categories[index]
-                                          .strCategory,
-                                      url: model.categoryList.categories[index]
-                                          .strCategoryThumb,
-                                      description: model
-                                          .categoryList
-                                          .categories[index]
-                                          .strCategoryDescription,
-                                      onPressed: () {});
+                                  return OpenContainer(
+                                    closedElevation: 0,
+                                    openElevation: 0,
+                                    closedColor: Colors.transparent,
+                                    openColor: Colors.transparent,
+                                    transitionType:
+                                        ContainerTransitionType.fade,
+                                    transitionDuration:
+                                        const Duration(milliseconds: 400),
+                                    openBuilder: (context, action) {
+                                      return CategoryDetailView(
+                                          name: model.categoryList
+                                              .categories[index].strCategory);
+                                    },
+                                    closedBuilder: (context, action) {
+                                      return CategoryItem(
+                                          name: model.categoryList
+                                              .categories[index].strCategory,
+                                          url: model
+                                              .categoryList
+                                              .categories[index]
+                                              .strCategoryThumb,
+                                          description: model
+                                              .categoryList
+                                              .categories[index]
+                                              .strCategoryDescription);
+                                    },
+                                  );
                                 },
                               ),
                             ),
-                            SectionHeader(
-                              title: "Try Local Foods",
-                              onPressed: () {},
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Try Local Foods",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 30,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Container(
                               height: 110,
@@ -167,7 +204,9 @@ class HomeView extends StatelessWidget {
                                     transitionDuration:
                                         const Duration(milliseconds: 400),
                                     openBuilder: (context, action) {
-                                      return HomeView();
+                                      return AreaView(
+                                          area: model
+                                              .areaList.meals[index].strArea);
                                     },
                                     closedBuilder: (context, action) {
                                       return AreaListItem(

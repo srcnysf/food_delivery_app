@@ -2,7 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/models/meal.dart';
-import 'package:food_delivery_app/ui/detail/detail_view.dart';
+import 'package:food_delivery_app/ui/meal_detail/detail_view.dart';
 import 'package:food_delivery_app/widgets/order_item.dart';
 import 'package:food_delivery_app/widgets/search_item.dart';
 import 'package:stacked/stacked.dart';
@@ -21,11 +21,11 @@ class FavouredView extends StatelessWidget {
             : Scaffold(
                 appBar: AppBar(
                   title: Text(
-                    "Favoured",
+                    "Favorites",
                     style: TextStyle(color: Constants.titleColor),
                   ),
                 ),
-                body: model.favoured.length == null
+                body: model.favoured == null || model.favoured.isEmpty
                     ? Center(
                         child: Text("You have no Favourite Meals"),
                       )
@@ -62,9 +62,6 @@ class FavouredView extends StatelessWidget {
                               },
                             ),
                           ),
-                          SizedBox(
-                            height: 70,
-                          )
                         ],
                       ),
               ));

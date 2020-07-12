@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CategoryItem extends StatelessWidget {
+class CategoryListItem extends StatelessWidget {
   final String name;
   final String description;
   final String url;
   final VoidCallback onPressed;
-  const CategoryItem({
+  const CategoryListItem({
     Key key,
     this.name,
     this.url,
@@ -26,7 +26,7 @@ class CategoryItem extends StatelessWidget {
           padding: EdgeInsets.all(0),
           onPressed: onPressed,
           child: Container(
-            width: 300,
+            width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -34,7 +34,7 @@ class CategoryItem extends StatelessWidget {
                 children: [
                   Container(
                     height: 220,
-                    width: 300,
+                    width: MediaQuery.of(context).size.width - 40,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(
                           Radius.circular(14),

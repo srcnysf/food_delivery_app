@@ -4,7 +4,7 @@ class TabItemData {
   final String title;
   final String path;
 
-  TabItemData(this.title ,this.path);
+  TabItemData(this.title, this.path);
 
   static Map<TabItem, TabItemData> tabs = {
     TabItem.Home: TabItemData(
@@ -19,9 +19,9 @@ class TabItemData {
       'Orders',
       "assets/orders.png",
     ),
-     TabItem.Profile: TabItemData(
-      'Profile',
-      "assets/profile.png",
+    TabItem.Profile: TabItemData(
+      'Favorite',
+      "assets/star.png",
     )
   };
 }

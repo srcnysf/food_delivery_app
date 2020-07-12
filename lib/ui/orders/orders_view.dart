@@ -38,9 +38,6 @@ class OrdersView extends StatelessWidget {
                               },
                             ),
                           ),
-                          SizedBox(
-                            height: 70,
-                          )
                         ],
                       ),
               ));

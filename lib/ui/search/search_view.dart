@@ -1,9 +1,8 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
-import 'package:food_delivery_app/ui/detail/detail_view.dart';
+import 'package:food_delivery_app/ui/meal_detail/detail_view.dart';
 import 'package:food_delivery_app/ui/search/search_view_model.dart';
-import 'package:food_delivery_app/widgets/meal_item.dart';
 import 'package:food_delivery_app/widgets/search_item.dart';
 import 'package:stacked/stacked.dart';
 
@@ -34,16 +33,14 @@ class SearchView extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5))),
                       ),
                     ),
-                    model.mealList == null
+                    model.mealList == null || model.mealList.meals == null
                         ? Center(
                             child: Text("No items to show"),
                           )
                         : Expanded(
                             child: ListView.builder(
                               scrollDirection: Axis.vertical,
-                              itemCount: model.mealList.meals.length > 10
-                                  ? 10
-                                  : model.mealList.meals.length,
+                              itemCount: model.mealList.meals.length,
                               padding: EdgeInsets.all(4),
                               itemBuilder: (context, index) {
                                 return OpenContainer(

@@ -7,5 +7,6 @@ class FavouredViewModel extends AppBaseViewModel {
   init() async {
     await Hive.openBox('favoured');
     repository.setFavouredMeals(Hive.box('favoured'));
+    notifyListeners();
   }
 }

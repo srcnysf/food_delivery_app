@@ -2,27 +2,27 @@
 
 Food Delyvery App POC writtern with Flutter.
 
-## Dependencies
+# Dependencies
 
-# Network
+## Network
 - [Dio](https://pub.dev/packages/dio)
 - [json_serializable](https://pub.dev/packages/json_serializable)
 
-# State Manangement
+## State Manangement
 - [stacked](https://pub.dev/packages/stacked)
 - [provider](https://pub.dev/packages/provider) (dependency for stacked)
 
-# Dependency Injection
+## Dependency Injection
 - [get_it](https://pub.dev/packages/get_it)
 
-# Dependency Injection
+## Dependency Injection
 - [get_it](https://pub.dev/packages/get_it)
 
-# Routing
+## Routing
 - [auto_route](https://pub.dev/packages/auto_route)
 
-# Animations
+## Animations
 - [animations](https://pub.dev/packages/animations)
 
-# Local DB
+## Local DB
 - [Hive](https://pub.dev/packages/hive)

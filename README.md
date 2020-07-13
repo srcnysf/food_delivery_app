@@ -1,16 +1,28 @@
 # food_delivery_app
 
-A new Flutter project.
+Food Delyvery App POC writtern with Flutter.
 
-## Getting Started
+## Dependencies
 
-This project is a starting point for a Flutter application.
+# Network
+- [Dio](https://pub.dev/packages/dio)
+- [json_serializable](https://pub.dev/packages/json_serializable)
 
-A few resources to get you started if this is your first Flutter project:
+# State Manangement
+- [stacked](https://pub.dev/packages/stacked)
+- [provider](https://pub.dev/packages/provider) (dependency for stacked)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# Dependency Injection
+- [get_it](https://pub.dev/packages/get_it)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Dependency Injection
+- [get_it](https://pub.dev/packages/get_it)
+
+# Routing
+- [auto_route](https://pub.dev/packages/auto_route)
+
+# Animations
+- [animations](https://pub.dev/packages/animations)
+
+# Local DB
+- [Hive](https://pub.dev/packages/hive)

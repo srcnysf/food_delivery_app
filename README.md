@@ -1,6 +1,6 @@
 # food_delivery_app
 
-Food Delyvery App POC writtern with Flutter.
+Food Delivery App POC writtern with Flutter.
 
 # Dependencies
 

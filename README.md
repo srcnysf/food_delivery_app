@@ -15,9 +15,6 @@ Food Delivery App POC writtern with Flutter.
 ## Dependency Injection
 - [get_it](https://pub.dev/packages/get_it)
 
-## Dependency Injection
-- [get_it](https://pub.dev/packages/get_it)
-
 ## Routing
 - [auto_route](https://pub.dev/packages/auto_route)
 

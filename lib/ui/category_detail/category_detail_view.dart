@@ -18,7 +18,7 @@ class CategoryDetailViewModel extends AppBaseViewModel {
 
   getMealsByCategory(String? category) async {
     var categoryRequest = CategoryRequest()..c = category;
-    await repository!.getMealsByCategory(categoryRequest).then((mealList) {
+    await repository!.getMealsByCategory(categoryRequest.c!).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {

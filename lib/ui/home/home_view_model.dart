@@ -42,7 +42,7 @@ class HomeViewModel extends AppBaseViewModel {
 
   getAreaList(String area) async {
     var areaRequest = AreaRequest()..a = area;
-    await repository!.getAreaList(areaRequest).then((areaList) {
+    await repository!.getAreaList(areaRequest.a!).then((areaList) {
       this.areaList = areaList;
       notifyListeners();
     }).catchError((error) {
@@ -53,7 +53,7 @@ class HomeViewModel extends AppBaseViewModel {
   getIngredientsList(String ingredient) async {
     var ingredientsRequest = IngredientsRequest()..i = ingredient;
     await repository!
-        .getIngredientsList(ingredientsRequest)
+        .getIngredientsList(ingredientsRequest.i!)
         .then((ingredientList) {
       this.ingredientList = ingredientList;
       notifyListeners();
@@ -64,7 +64,7 @@ class HomeViewModel extends AppBaseViewModel {
 
   getMealsByCategory(String category) async {
     var categoryRequest = CategoryRequest()..c = category;
-    await repository!.getMealsByCategory(categoryRequest).then((mealList) {
+    await repository!.getMealsByCategory(categoryRequest.c!).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {
@@ -74,7 +74,7 @@ class HomeViewModel extends AppBaseViewModel {
 
   getMealsByArea(String area) async {
     var areaRequest = AreaRequest()..a = area;
-    await repository!.getMealsByArea(areaRequest).then((mealList) {
+    await repository!.getMealsByArea(areaRequest.a!).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {
@@ -84,7 +84,9 @@ class HomeViewModel extends AppBaseViewModel {
 
   getMealsByIngredients(String ingredients) async {
     var ingredientsRequest = IngredientsRequest()..i = ingredients;
-    await repository!.getMealsByIngredients(ingredientsRequest).then((mealList) {
+    await repository!
+        .getMealsByIngredients(ingredientsRequest.i!)
+        .then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {

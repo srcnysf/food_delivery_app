@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:food_delivery_app/constants/api_constnts.dart';
 import 'package:food_delivery_app/models/request/area_request.dart';
 import 'package:food_delivery_app/models/request/category_request.dart';
@@ -10,108 +11,39 @@ import 'package:food_delivery_app/models/response/category_list_response.dart';
 import 'package:food_delivery_app/models/response/ingredient_list_response.dart';
 import 'package:food_delivery_app/models/response/meal_detail_list_response.dart';
 import 'package:food_delivery_app/models/response/meal_list_response.dart';
-import 'package:food_delivery_app/utils/network_util.dart';
+import 'package:retrofit/retrofit.dart';
 
-class ApiService {
-  NetworkUtil networkUtil = NetworkUtil();
+part 'api_service.g.dart';
 
-  Future<Categories> getCategories() async {
-    try {
-      final res = await networkUtil.get(ApiConstants.CATEGORIES.toString());
-      return Categories.fromJson(res);
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
-  }
+@RestApi()
+abstract class ApiService {
+  factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
-  Future<MealDetailListResponse> getMealById(MealRequest mealRequest) async {
-    try {
-      final res = await networkUtil.get(ApiConstants.LOOKUP,
-          params: mealRequest.toMap());
-      return MealDetailListResponse.fromJson(res);
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
-  }
+  @GET("categories.php")
+  Future<Categories> getCategories();
 
-  Future<MealDetailListResponse> searchMealByName(SearchRequest searchRequest) async {
-    try {
-      final res = await networkUtil.get(ApiConstants.SEARCH,
-          params: searchRequest.toMap());
-      return MealDetailListResponse.fromJson(res);
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
-  }
+  @GET("lookup.php")
+  Future<MealDetailListResponse> getMealById(@Query("i") String id);
 
-  Future<CategoryListResponse> getCategoryList(CategoryRequest categoryRequest) async {
-    try {
-      final res = await networkUtil.get(ApiConstants.LIST,
-          params: categoryRequest.toMap());
-      return CategoryListResponse.fromJson(res);
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
-  }
+  @GET("search.php")
+  Future<MealDetailListResponse> searchMealByName(@Query("s") String search);
 
-  Future<AreaListReponse> getAreaList(AreaRequest areaRequest) async {
-    try {
-      final res =
-          await networkUtil.get(ApiConstants.LIST, params: areaRequest.toMap());
-      return AreaListReponse.fromJson(res);
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
-  }
+  @GET("list.php")
+  Future<CategoryListResponse> getCategoryList(@Query("c") String category);
 
+  @GET("list.php")
+  Future<AreaListReponse> getAreaList(@Query("a") String area);
+
+  @GET("list.php")
   Future<IngredientsListResponse> getIngredientsList(
-      IngredientsRequest ingredientsRequest) async {
-    try {
-      final res = await networkUtil.get(ApiConstants.LIST,
-          params: ingredientsRequest.toMap());
-      return IngredientsListResponse.fromJson(res);
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
-  }
+      @Query("i") String ingredients);
 
-  Future<MealListResponse> filterByCategory(CategoryRequest categoryRequest) async {
-    try {
-      final res = await networkUtil.get(ApiConstants.FILTER_BY,
-          params: categoryRequest.toMap());
-      return MealListResponse.fromJson(res);
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
-  }
+  @GET("filter.php")
+  Future<MealListResponse> filterByCategory(@Query("c") String category);
 
-  Future<MealListResponse> filterByArea(AreaRequest areaRequest) async {
-    try {
-      final res = await networkUtil.get(ApiConstants.FILTER_BY,
-          params: areaRequest.toMap());
-      return MealListResponse.fromJson(res);
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
-  }
+  @GET("filter.php")
+  Future<MealListResponse> filterByArea(@Query("a") String area);
 
-  Future<MealListResponse> filterByIngredients(
-      IngredientsRequest ingredientsRequest) async {
-    try {
-      final res = await networkUtil.get(ApiConstants.FILTER_BY,
-          params: ingredientsRequest.toMap());
-      return MealListResponse.fromJson(res);
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
-  }
+  @GET("filter.php")
+  Future<MealListResponse> filterByIngredients(@Query("i") String ingredients);
 }

@@ -34,7 +34,7 @@ class DetailViewModel extends AppBaseViewModel {
 
   getCategories(String? id) async {
     MealRequest mealRequest = MealRequest()..i = id;
-    await repository!.getMeal(mealRequest).then((meals) {
+    await repository!.getMeal(mealRequest.i!).then((meals) {
       this.mealList = meals;
       if (mealList!.meals!.first.strIngredient1 != null)
         this.selectedIngredients.add(mealList!.meals!.first.strIngredient1);

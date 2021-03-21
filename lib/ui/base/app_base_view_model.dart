@@ -3,7 +3,7 @@ import 'package:food_delivery_app/repository/repository.dart';
 import 'package:hive/hive.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../locator.dart';
+import '../../di/locator.dart';
 
 class AppBaseViewModel extends BaseViewModel {
   final Repository? repository = locator<Repository>();

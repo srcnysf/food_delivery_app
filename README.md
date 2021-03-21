@@ -1,16 +1,17 @@
 # food_delivery_app
 
-Food Delivery App POC writtern with Flutter.
+Food Delivery App POC App Developed with Flutter.
+
+Migrated Flutter 2.0 Null-Safety
 
 # Dependencies
 
 ## Network
 - [Dio](https://pub.dev/packages/dio)
-- [json_serializable](https://pub.dev/packages/json_serializable)
+- [Retrofit](https://pub.dev/packages/retrofit)
 
 ## State Manangement
 - [stacked](https://pub.dev/packages/stacked)
-- [provider](https://pub.dev/packages/provider) (dependency for stacked)
 
 ## Dependency Injection
 - [get_it](https://pub.dev/packages/get_it)

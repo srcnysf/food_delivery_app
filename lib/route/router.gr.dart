@@ -6,15 +6,15 @@
 
 import 'package:auto_route/auto_route.dart' as _i1;
 
-import 'ui/basket/basket_view.dart' as _i5;
-import 'ui/categories/categories_view.dart' as _i10;
-import 'ui/favoured/favoured_view.dart' as _i8;
-import 'ui/home/home_view.dart' as _i4;
-import 'ui/main/main_view.dart' as _i3;
-import 'ui/near_you/near_view.dart' as _i9;
-import 'ui/orders/orders_view.dart' as _i6;
-import 'ui/search/search_view.dart' as _i7;
-import 'ui/splash/splash_view.dart' as _i2;
+import '../ui/basket/basket_view.dart' as _i5;
+import '../ui/categories/categories_view.dart' as _i10;
+import '../ui/favoured/favoured_view.dart' as _i8;
+import '../ui/home/home_view.dart' as _i4;
+import '../ui/main/main_view.dart' as _i3;
+import '../ui/near_you/near_view.dart' as _i9;
+import '../ui/orders/orders_view.dart' as _i6;
+import '../ui/search/search_view.dart' as _i7;
+import '../ui/splash/splash_view.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter();

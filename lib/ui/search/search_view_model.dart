@@ -10,7 +10,7 @@ class SearchViewModel extends AppBaseViewModel {
 
   searchMeals(String ingredient) async {
     SearchRequest searchRequest = SearchRequest()..s = ingredient;
-    await repository!.searchMealByName(searchRequest).then((mealList) {
+    await repository!.searchMealByName(searchRequest.s!).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {

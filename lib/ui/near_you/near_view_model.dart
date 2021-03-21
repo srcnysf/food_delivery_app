@@ -25,7 +25,7 @@ class NearViewModel extends AppBaseViewModel {
 
   getMealsByArea(String area) async {
     var areaRequest = AreaRequest()..a = area;
-    await repository!.getMealsByArea(areaRequest).then((mealList) {
+    await repository!.getMealsByArea(areaRequest.a!).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {

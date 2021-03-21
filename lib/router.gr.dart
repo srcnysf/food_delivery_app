@@ -22,45 +22,90 @@ class AppRouter extends _i1.RootStackRouter {
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
     SplashView.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i2.SplashView());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: _i2.SplashView(),
+          maintainState: true,
+          fullscreenDialog: false);
     },
     MainView.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: const _i3.MainView());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: const _i3.MainView(),
+          maintainState: true,
+          fullscreenDialog: false);
     },
     HomeView.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i4.HomeView());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: _i4.HomeView(),
+          maintainState: true,
+          fullscreenDialog: false);
     },
     BasketView.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i5.BasketView());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: _i5.BasketView(),
+          maintainState: true,
+          fullscreenDialog: false);
     },
     OrdersView.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i6.OrdersView());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: _i6.OrdersView(),
+          maintainState: true,
+          fullscreenDialog: false);
     },
     SearchView.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i7.SearchView());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: _i7.SearchView(),
+          maintainState: true,
+          fullscreenDialog: false);
     },
     FavouredView.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i8.FavouredView());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: _i8.FavouredView(),
+          maintainState: true,
+          fullscreenDialog: false);
     },
     NearView.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i9.NearView());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: _i9.NearView(),
+          maintainState: true,
+          fullscreenDialog: false);
     },
     CategoriesView.name: (entry) {
-      return _i1.MaterialPageX(entry: entry, child: _i10.CategoriesView());
+      return _i1.MaterialPageX(
+          entry: entry,
+          child: _i10.CategoriesView(),
+          maintainState: true,
+          fullscreenDialog: false);
     }
   };
 
   @override
   List<_i1.RouteConfig> get routes => [
-        _i1.RouteConfig(SplashView.name, path: '/'),
-        _i1.RouteConfig(MainView.name, path: '/main-view'),
-        _i1.RouteConfig(HomeView.name, path: '/home-view'),
-        _i1.RouteConfig(BasketView.name, path: '/basket-view'),
-        _i1.RouteConfig(OrdersView.name, path: '/orders-view'),
-        _i1.RouteConfig(SearchView.name, path: '/search-view'),
-        _i1.RouteConfig(FavouredView.name, path: '/favoured-view'),
-        _i1.RouteConfig(NearView.name, path: '/near-view'),
-        _i1.RouteConfig(CategoriesView.name, path: '/categories-view')
+        _i1.RouteConfig(SplashView.name,
+            path: '/', fullMatch: false, usesTabsRouter: false),
+        _i1.RouteConfig(MainView.name,
+            path: '/main-view', fullMatch: false, usesTabsRouter: false),
+        _i1.RouteConfig(HomeView.name,
+            path: '/home-view', fullMatch: false, usesTabsRouter: false),
+        _i1.RouteConfig(BasketView.name,
+            path: '/basket-view', fullMatch: false, usesTabsRouter: false),
+        _i1.RouteConfig(OrdersView.name,
+            path: '/orders-view', fullMatch: false, usesTabsRouter: false),
+        _i1.RouteConfig(SearchView.name,
+            path: '/search-view', fullMatch: false, usesTabsRouter: false),
+        _i1.RouteConfig(FavouredView.name,
+            path: '/favoured-view', fullMatch: false, usesTabsRouter: false),
+        _i1.RouteConfig(NearView.name,
+            path: '/near-view', fullMatch: false, usesTabsRouter: false),
+        _i1.RouteConfig(CategoriesView.name,
+            path: '/categories-view', fullMatch: false, usesTabsRouter: false)
       ];
 }
 

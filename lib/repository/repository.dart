@@ -15,7 +15,9 @@ import 'package:hive/hive.dart';
 import '../locator.dart';
 
 class Repository {
-  final ApiService? _apiService = locator<ApiService>();
+  final ApiService _apiService;
+
+  Repository(this._apiService);
 
   Box? _ordersBox;
   Box? get ordersBox => _ordersBox;
@@ -36,59 +38,54 @@ class Repository {
   }
 
   Future<Categories> getCategories() async {
-    return await _apiService!.getCategories().catchError((error) => throw error);
+    return await _apiService.getCategories().catchError((error) => throw error);
   }
 
-  Future<CategoryListResponse> getCategoryList(
-      CategoryRequest categoryRequest) async {
-    return await _apiService!
-        .getCategoryList(categoryRequest)
+  Future<CategoryListResponse> getCategoryList(String category) async {
+    return await _apiService
+        .getCategoryList(category)
         .catchError((error) => throw error);
   }
 
-  Future<AreaListReponse> getAreaList(AreaRequest areaRequest) async {
-    return await _apiService!
-        .getAreaList(areaRequest)
+  Future<AreaListReponse> getAreaList(String area) async {
+    return await _apiService
+        .getAreaList(area)
         .catchError((error) => throw error);
   }
 
-  Future<IngredientsListResponse> getIngredientsList(
-      IngredientsRequest ingredientsRequest) async {
-    return await _apiService!
-        .getIngredientsList(ingredientsRequest)
+  Future<IngredientsListResponse> getIngredientsList(String ingredient) async {
+    return await _apiService
+        .getIngredientsList(ingredient)
         .catchError((error) => throw error);
   }
 
-  Future<MealListResponse> getMealsByCategory(
-      CategoryRequest categoryRequest) async {
-    return await _apiService!
-        .filterByCategory(categoryRequest)
+  Future<MealListResponse> getMealsByCategory(String category) async {
+    return await _apiService
+        .filterByCategory(category)
         .catchError((error) => throw error);
   }
 
-  Future<MealListResponse> getMealsByArea(AreaRequest areaRequest) async {
-    return await _apiService!
-        .filterByArea(areaRequest)
+  Future<MealListResponse> getMealsByArea(String area) async {
+    return await _apiService
+        .filterByArea(area)
         .catchError((error) => throw error);
   }
 
-  Future<MealListResponse> getMealsByIngredients(
-      IngredientsRequest ingredientsRequest) async {
-    return await _apiService!
-        .filterByIngredients(ingredientsRequest)
+  Future<MealListResponse> getMealsByIngredients(String ingredient) async {
+    return await _apiService
+        .filterByIngredients(ingredient)
         .catchError((error) => throw error);
   }
 
-  Future<MealDetailListResponse> getMeal(MealRequest mealRequest) async {
-    return await _apiService!
-        .getMealById(mealRequest)
+  Future<MealDetailListResponse> getMeal(String mealId) async {
+    return await _apiService
+        .getMealById(mealId)
         .catchError((error) => throw error);
   }
 
-  Future<MealDetailListResponse> searchMealByName(
-      SearchRequest searchRequest) async {
-    return await _apiService!
-        .searchMealByName(searchRequest)
+  Future<MealDetailListResponse> searchMealByName(String search) async {
+    return await _apiService
+        .searchMealByName(search)
         .catchError((error) => throw error);
   }
 }

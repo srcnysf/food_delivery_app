@@ -8,10 +8,10 @@ import 'package:get_it/get_it.dart';
 GetIt locator = GetIt.instance;
 
 Future<void> setupLocator() async {
-  locator.registerLazySingleton(() => HomeViewModel());
-
   ///NETWORK
   locator.registerLazySingleton<Dio>(() => NetworkUtil().getDio());
   locator.registerLazySingleton(() => ApiService(locator.get()));
   locator.registerLazySingleton(() => Repository(locator.get()));
+
+  locator.registerLazySingleton(() => HomeViewModel());
 }

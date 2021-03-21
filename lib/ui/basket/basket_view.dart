@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/models/meal.dart';
@@ -22,7 +23,7 @@ class BasketView extends StatelessWidget {
                     style: TextStyle(color: Constants.titleColor),
                   ),
                 ),
-                body: model.basket.length == 0
+                body: model.basket!.length == 0
                     ? Center(
                         child: Text("Your Basket is empty"),
                       )
@@ -35,12 +36,12 @@ class BasketView extends StatelessWidget {
                               children: [
                                 ListView.builder(
                                   shrinkWrap: true,
-                                  itemCount: model.basket.length,
+                                  itemCount: model.basket!.length,
                                   physics: NeverScrollableScrollPhysics(),
                                   padding: EdgeInsets.all(4),
                                   itemBuilder: (context, index) {
                                     var meal =
-                                        model.basket.getAt(index) as Meal;
+                                        model.basket!.getAt(index) as Meal?;
                                     return BasketMealListItem(
                                       meal: meal,
                                       plus: () {
@@ -67,10 +68,10 @@ class BasketView extends StatelessWidget {
                                 color: Constants.primaryColor,
                                 onPressed: () {
                                   model.setOrder();
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context,
-                                      Routes.mainView,
-                                      (Route<dynamic> route) => false);
+                                  AutoRouter.of(context).pushAndRemoveUntil(
+                                      MainView(),
+                                      predicate: (Route<dynamic> route) =>
+                                          false);
                                 },
                                 child: Container(
                                     height: 50,

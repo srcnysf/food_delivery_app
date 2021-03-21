@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 class AreaRequest {
-  String a;
+  String? a;
   AreaRequest({
     this.a,
   });
 
   AreaRequest copyWith({
-    String a,
+    String? a,
   }) {
     return AreaRequest(
       a: a ?? this.a,
@@ -20,7 +20,7 @@ class AreaRequest {
     };
   }
 
-  static AreaRequest fromMap(Map<String, dynamic> map) {
+  static AreaRequest? fromMap(Map<String, dynamic>? map) {
     if (map == null) return null;
   
     return AreaRequest(
@@ -30,7 +30,7 @@ class AreaRequest {
 
   String toJson() => json.encode(toMap());
 
-  static AreaRequest fromJson(String source) => fromMap(json.decode(source));
+  static AreaRequest? fromJson(String source) => fromMap(json.decode(source));
 
   @override
   String toString() => 'AreaRequest(a: $a)';

@@ -28,7 +28,7 @@ class CategoriesView extends StatelessWidget {
                         Expanded(
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
-                            itemCount: model.categoryList.categories.length,
+                            itemCount: model.categoryList!.categories!.length,
                             padding: EdgeInsets.all(4),
                             itemBuilder: (context, index) {
                               return OpenContainer(
@@ -41,18 +41,18 @@ class CategoriesView extends StatelessWidget {
                                     const Duration(milliseconds: 400),
                                 openBuilder: (context, action) {
                                   return CategoryDetailView(
-                                      name: model.categoryList.categories[index]
+                                      name: model.categoryList!.categories![index]
                                           .strCategory);
                                 },
                                 closedBuilder: (context, action) {
                                   return CategoryListItem(
-                                    name: model.categoryList.categories[index]
+                                    name: model.categoryList!.categories![index]
                                         .strCategory,
-                                    url: model.categoryList.categories[index]
+                                    url: model.categoryList!.categories![index]
                                         .strCategoryThumb,
                                     description: model
-                                        .categoryList
-                                        .categories[index]
+                                        .categoryList!
+                                        .categories![index]
                                         .strCategoryDescription,
                                   );
                                 },

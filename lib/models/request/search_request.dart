@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 class SearchRequest {
-  String s;
+  String? s;
   SearchRequest({
     this.s,
   });
 
   SearchRequest copyWith({
-    String s,
+    String? s,
   }) {
     return SearchRequest(
       s: s ?? this.s,
@@ -20,7 +20,7 @@ class SearchRequest {
     };
   }
 
-  static SearchRequest fromMap(Map<String, dynamic> map) {
+  static SearchRequest? fromMap(Map<String, dynamic>? map) {
     if (map == null) return null;
 
     return SearchRequest(
@@ -30,7 +30,7 @@ class SearchRequest {
 
   String toJson() => json.encode(toMap());
 
-  static SearchRequest fromJson(String source) => fromMap(json.decode(source));
+  static SearchRequest? fromJson(String source) => fromMap(json.decode(source));
 
   @override
   String toString() => 'SearchRequest(s: $s)';

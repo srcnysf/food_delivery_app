@@ -5,21 +5,21 @@ part 'meal.g.dart';
 @HiveType(typeId: 0)
 class Meal {
   @HiveField(0)
-  String id;
+  String? id;
   @HiveField(1)
-  String name;
+  String? name;
   @HiveField(2)
-  String url;
+  String? url;
   @HiveField(3)
-  String time;
+  String? time;
   @HiveField(4)
-  int price;
+  int? price;
   @HiveField(5)
-  List<String> ingrediendsList;
+  List<String?>? ingrediendsList;
   @HiveField(6)
-  List<String> addsOnList;
+  List<String>? addsOnList;
   @HiveField(7)
-  String desc;
+  String? desc;
   @HiveField(8)
-  int count;
+  int? count;
 }

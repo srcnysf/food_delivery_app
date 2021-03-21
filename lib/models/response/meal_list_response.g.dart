@@ -8,10 +8,9 @@ part of 'meal_list_response.dart';
 
 MealListResponse _$MealListResponseFromJson(Map<String, dynamic> json) {
   return MealListResponse(
-    meals: (json['meals'] as List)
-        ?.map((e) =>
-            e == null ? null : MealResponse.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    meals: (json['meals'] as List<dynamic>?)
+        ?.map((e) => MealResponse.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SectionHeader extends StatelessWidget {
-  final String title;
-  final VoidCallback onPressed;
+  final String? title;
+  final VoidCallback? onPressed;
   const SectionHeader({
-    Key key,
+    Key? key,
     this.title,
     this.onPressed,
   }) : super(key: key);
@@ -19,7 +19,7 @@ class SectionHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              title,
+              title!,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 30,

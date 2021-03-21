@@ -25,7 +25,7 @@ class FavouredView extends StatelessWidget {
                     style: TextStyle(color: Constants.titleColor),
                   ),
                 ),
-                body: model.favoured == null || model.favoured.isEmpty
+                body: model.favoured == null || model.favoured!.isEmpty
                     ? Center(
                         child: Text("You have no Favourite Meals"),
                       )
@@ -34,10 +34,10 @@ class FavouredView extends StatelessWidget {
                           Expanded(
                             child: ListView.builder(
                               scrollDirection: Axis.vertical,
-                              itemCount: model.favoured.length,
+                              itemCount: model.favoured!.length,
                               padding: EdgeInsets.all(4),
                               itemBuilder: (context, index) {
-                                var meal = model.favoured.getAt(index) as Meal;
+                                var meal = model.favoured!.getAt(index) as Meal?;
 
                                 return OpenContainer(
                                   closedElevation: 0,
@@ -49,14 +49,14 @@ class FavouredView extends StatelessWidget {
                                       const Duration(milliseconds: 400),
                                   openBuilder: (context, action) {
                                     return DetailView(
-                                      id: meal.id,
+                                      id: meal!.id,
                                       name: meal.name,
                                       url: meal.url,
                                     );
                                   },
                                   closedBuilder: (context, action) {
                                     return SearchListItem(
-                                        name: meal.name, url: meal.url);
+                                        name: meal!.name, url: meal.url);
                                   },
                                 );
                               },

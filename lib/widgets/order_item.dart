@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/models/meal.dart';
 
 class OrdersMealListItem extends StatelessWidget {
-  final Meal meal;
+  final Meal? meal;
   const OrdersMealListItem({
-    Key key,
+    Key? key,
     this.meal,
   }) : super(key: key);
 
@@ -32,14 +32,14 @@ class OrdersMealListItem extends StatelessWidget {
                         Radius.circular(14),
                       ),
                       image: DecorationImage(
-                          fit: BoxFit.fitWidth, image: NetworkImage(meal.url))),
+                          fit: BoxFit.fitWidth, image: NetworkImage(meal!.url!))),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     height: 45,
                     child: Text(
-                      meal.name,
+                      meal!.name!,
                       maxLines: 2,
                       softWrap: true,
                       textAlign: TextAlign.start,
@@ -59,8 +59,8 @@ class OrdersMealListItem extends StatelessWidget {
                     )
                   ],
                 ),
-                if (meal.ingrediendsList != null &&
-                    meal.ingrediendsList.isNotEmpty)
+                if (meal!.ingrediendsList != null &&
+                    meal!.ingrediendsList!.isNotEmpty)
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Wrap(
@@ -70,7 +70,7 @@ class OrdersMealListItem extends StatelessWidget {
                                 bottom: 2, left: 8, right: 4, top: 2),
                             child: Icon(Icons.fastfood)),
                         Wrap(
-                            children: meal.ingrediendsList
+                            children: meal!.ingrediendsList!
                                 .map((e) => Wrap(
                                       children: [
                                         Text(
@@ -83,7 +83,7 @@ class OrdersMealListItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                if (meal.addsOnList != null && meal.addsOnList.isNotEmpty)
+                if (meal!.addsOnList != null && meal!.addsOnList!.isNotEmpty)
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Wrap(
@@ -93,7 +93,7 @@ class OrdersMealListItem extends StatelessWidget {
                                 bottom: 2, left: 8, right: 4, top: 2),
                             child: Icon(Icons.add)),
                         Wrap(
-                            children: meal.addsOnList
+                            children: meal!.addsOnList!
                                 .map((e) => Wrap(
                                       children: [
                                         Text(
@@ -113,7 +113,7 @@ class OrdersMealListItem extends StatelessWidget {
                             bottom: 2, left: 8, right: 4, top: 2),
                         child: Icon(Icons.monetization_on)),
                     Text(
-                      "${meal.price * meal.count} \$",
+                      "${meal!.price! * meal!.count!} \$",
                       maxLines: 2,
                       style: TextStyle(color: Colors.grey),
                     )
@@ -126,7 +126,7 @@ class OrdersMealListItem extends StatelessWidget {
                             bottom: 2, left: 8, right: 4, top: 2),
                         child: Icon(Icons.add_circle_outline)),
                     Text(
-                      "count : ${meal.count}",
+                      "count : ${meal!.count}",
                       maxLines: 2,
                       style: TextStyle(color: Colors.grey),
                     ),

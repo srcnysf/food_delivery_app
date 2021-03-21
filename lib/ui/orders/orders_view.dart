@@ -30,10 +30,10 @@ class OrdersView extends StatelessWidget {
                           Expanded(
                             child: ListView.builder(
                               scrollDirection: Axis.vertical,
-                              itemCount: model.orders.length,
+                              itemCount: model.orders!.length,
                               padding: EdgeInsets.all(4),
                               itemBuilder: (context, index) {
-                                var meal = model.orders.getAt(index) as Meal;
+                                var meal = model.orders!.getAt(index) as Meal?;
                                 return OrdersMealListItem(meal: meal);
                               },
                             ),

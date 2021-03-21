@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SearchListItem extends StatelessWidget {
-  final String name;
-  final String url;
-  const SearchListItem({Key key, this.name, this.url}) : super(key: key);
+  final String? name;
+  final String? url;
+  const SearchListItem({Key? key, this.name, this.url}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class SearchListItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Hero(
-                  tag: url,
+                  tag: url!,
                   child: Container(
                     height: 220,
                     width: MediaQuery.of(context).size.width - 40,
@@ -31,7 +31,7 @@ class SearchListItem extends StatelessWidget {
                           Radius.circular(14),
                         ),
                         image: DecorationImage(
-                            fit: BoxFit.fitWidth, image: NetworkImage(url))),
+                            fit: BoxFit.fitWidth, image: NetworkImage(url!))),
                   ),
                 ),
                 Padding(
@@ -39,7 +39,7 @@ class SearchListItem extends StatelessWidget {
                   child: Container(
                     height: 45,
                     child: Text(
-                      name,
+                      name!,
                       maxLines: 2,
                       softWrap: true,
                       textAlign: TextAlign.start,

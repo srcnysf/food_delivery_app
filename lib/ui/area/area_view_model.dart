@@ -4,9 +4,9 @@ import 'package:food_delivery_app/ui/base/app_base_view_model.dart';
 import 'package:food_delivery_app/utils/network_error_util.dart';
 
 class AreaViewModel extends AppBaseViewModel {
-  MealListResponse mealList;
+  MealListResponse? mealList;
 
-  void initialize(String area) async {
+  void initialize(String? area) async {
     setBusy(true);
     if (mealList == null) {
       await getMealsByArea(area);
@@ -15,9 +15,9 @@ class AreaViewModel extends AppBaseViewModel {
     setBusy(false);
   }
 
-  getMealsByArea(String area) async {
+  getMealsByArea(String? area) async {
     var areaRequest = AreaRequest()..a = area;
-    await repository.getMealsByArea(areaRequest).then((mealList) {
+    await repository!.getMealsByArea(areaRequest).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_delivery_app/constants/constants.dart';
@@ -9,14 +10,12 @@ import '../../router.gr.dart';
 import 'detail_view_model.dart';
 
 class DetailView extends StatelessWidget {
-  final String url;
-  final String name;
-  final String id;
-  const DetailView({Key key, this.url, this.name, this.id}) : super(key: key);
+  final String? url;
+  final String? name;
+  final String? id;
+  const DetailView({Key? key, this.url, this.name, this.id}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    FlutterToast flutterToast = FlutterToast(context);
-
     return ViewModelBuilder<DetailViewModel>.reactive(
         viewModelBuilder: () => DetailViewModel(),
         onModelReady: (model) => model.initialize(id),
@@ -32,13 +31,13 @@ class DetailView extends StatelessWidget {
                       actions: [
                         model.mealList != null
                             ? IconButton(
-                                icon: model.favorite.containsKey(
-                                        model.mealList.meals.first.idMeal)
+                                icon: model.favorite!.containsKey(
+                                        model.mealList!.meals!.first.idMeal)
                                     ? Icon(Icons.favorite)
                                     : Icon(Icons.favorite_border),
                                 onPressed: () {
                                   model
-                                      .setFavourite(model.mealList.meals.first);
+                                      .setFavourite(model.mealList!.meals!.first);
                                 },
                               )
                             : Container()
@@ -48,22 +47,22 @@ class DetailView extends StatelessWidget {
                       floating: false,
                       flexibleSpace: FlexibleSpaceBar(
                         title: Text(
-                          name,
+                          name!,
                           style: TextStyle(color: Constants.titleColor),
                         ),
                         background: Hero(
-                            tag: url,
+                            tag: url!,
                             child: ShaderMask(
                               shaderCallback: (Rect bounds) {
                                 return LinearGradient(
                                   end: Alignment(0.0, 0.8),
                                   begin: Alignment(0.0, 0.2),
-                                  colors: [Colors.white, Colors.grey[600]],
+                                  colors: [Colors.white, Colors.grey[600]!],
                                   stops: [0, 1],
                                 ).createShader(bounds);
                               },
                               child: Image.network(
-                                url,
+                                url!,
                                 fit: BoxFit.fitWidth,
                               ),
                             )),
@@ -84,47 +83,47 @@ class DetailView extends StatelessWidget {
                                         value: model.selectedIngredients,
                                         enabled: true,
                                         title: "Ingredients",
-                                        options: <SmartSelectOption<String>>[
-                                          if (model.mealList.meals.first
+                                        options: <SmartSelectOption<String?>>[
+                                          if (model.mealList!.meals!.first
                                                   .strIngredient1 !=
                                               null)
-                                            SmartSelectOption<String>(
-                                                value: model.mealList.meals
+                                            SmartSelectOption<String?>(
+                                                value: model.mealList!.meals!
                                                     .first.strIngredient1,
-                                                title: model.mealList.meals
-                                                    .first.strIngredient1),
-                                          if (model.mealList.meals.first
+                                                title: model.mealList!.meals!
+                                                    .first.strIngredient1!),
+                                          if (model.mealList!.meals!.first
                                                   .strIngredient2 !=
                                               null)
-                                            SmartSelectOption<String>(
-                                                value: model.mealList.meals
+                                            SmartSelectOption<String?>(
+                                                value: model.mealList!.meals!
                                                     .first.strIngredient2,
-                                                title: model.mealList.meals
-                                                    .first.strIngredient2),
-                                          if (model.mealList.meals.first
+                                                title: model.mealList!.meals!
+                                                    .first.strIngredient2!),
+                                          if (model.mealList!.meals!.first
                                                   .strIngredient3 !=
                                               null)
-                                            SmartSelectOption<String>(
-                                                value: model.mealList.meals
+                                            SmartSelectOption<String?>(
+                                                value: model.mealList!.meals!
                                                     .first.strIngredient3,
-                                                title: model.mealList.meals
-                                                    .first.strIngredient3),
-                                          if (model.mealList.meals.first
+                                                title: model.mealList!.meals!
+                                                    .first.strIngredient3!),
+                                          if (model.mealList!.meals!.first
                                                   .strIngredient4 !=
                                               null)
-                                            SmartSelectOption<String>(
-                                                value: model.mealList.meals
+                                            SmartSelectOption<String?>(
+                                                value: model.mealList!.meals!
                                                     .first.strIngredient4,
-                                                title: model.mealList.meals
-                                                    .first.strIngredient4),
-                                          if (model.mealList.meals.first
+                                                title: model.mealList!.meals!
+                                                    .first.strIngredient4!),
+                                          if (model.mealList!.meals!.first
                                                   .strIngredient5 !=
                                               null)
-                                            SmartSelectOption<String>(
-                                                value: model.mealList.meals
+                                            SmartSelectOption<String?>(
+                                                value: model.mealList!.meals!
                                                     .first.strIngredient5,
-                                                title: model.mealList.meals
-                                                    .first.strIngredient5),
+                                                title: model.mealList!.meals!
+                                                    .first.strIngredient5!),
                                         ],
                                         choiceConfig: SmartSelectChoiceConfig(
                                             style: SmartSelectChoiceStyle(
@@ -142,7 +141,7 @@ class DetailView extends StatelessWidget {
                                         trailing: Icon(Icons.add),
                                         modalConfig: SmartSelectModalConfig(
                                             style: SmartSelectModalStyle()),
-                                        value: model.selectedAddsOnList,
+                                        value: model.selectedAddsOnList!,
                                         title: "Adds On",
                                         options: <SmartSelectOption<String>>[
                                           SmartSelectOption<String>(
@@ -195,7 +194,7 @@ class DetailView extends StatelessWidget {
                                           activeSubtitleStyle: TextStyle(
                                               color: Constants.primaryColor),
                                         )),
-                                        onChange: (val) => model.setTime(val),
+                                        onChange: (dynamic val) => model.setTime(val),
                                         modalType:
                                             SmartSelectModalType.bottomSheet),
                                     Padding(
@@ -221,7 +220,7 @@ class DetailView extends StatelessWidget {
                                       ),
                                     ),
                                     Center(
-                                      child: RaisedButton(
+                                      child: MaterialButton(
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(15)),
@@ -230,20 +229,18 @@ class DetailView extends StatelessWidget {
                                           if (model.time != null &&
                                               model.time.isNotEmpty) {
                                             model.addToBasket(
-                                                model.mealList.meals.first);
-                                            flutterToast.showToast(
-                                              child: Container(
-                                                  child: Text("ItemAdded")),
+                                                model.mealList!.meals!.first);
+                                            Fluttertoast.showToast(
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              msg: "ItemAdded",
                                               gravity: ToastGravity.BOTTOM,
-                                              toastDuration:
-                                                  Duration(seconds: 2),
+                                              timeInSecForIosWeb: 1,
                                             );
-                                            // Navigator.pop(context);
-                                            Navigator.pushNamedAndRemoveUntil(
-                                                context,
-                                                Routes.mainView,
-                                                (Route<dynamic> route) =>
-                                                    false);
+                                            AutoRouter.of(context)
+                                                .pushAndRemoveUntil(MainView(),
+                                                    predicate: (Route<dynamic>
+                                                            route) =>
+                                                        false);
                                           }
                                         },
                                         child: Container(

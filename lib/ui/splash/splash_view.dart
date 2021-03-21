@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_splash/flutter_splash.dart';
 import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/ui/splash/splash_view_model.dart';
+import 'package:food_delivery_app/widgets/splash.dart';
 import 'package:stacked/stacked.dart';
 
 class SplashView extends StatelessWidget {
@@ -9,10 +9,9 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.reactive(
         viewModelBuilder: () => SplashViewModel(),
-        onModelReady: (model) => model.openHive(),
+        onModelReady: (model) => model.init(context),
         builder: (context, model, widget) {
           return Splash(
-              navigateAfterFuture: model.handleStartUpLogic,
               image: Image.asset('assets/logo.png'),
               title: Text("Food Delyvery App",
                   style: TextStyle(

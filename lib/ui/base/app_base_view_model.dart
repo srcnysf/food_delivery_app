@@ -6,10 +6,10 @@ import 'package:stacked/stacked.dart';
 import '../../locator.dart';
 
 class AppBaseViewModel extends BaseViewModel {
-  final Repository repository = locator<Repository>();
+  final Repository? repository = locator<Repository>();
   String errorMessage = '';
-  Box get basket => repository.basketBox;
-  Box get favorite => repository.favouredMealsBox;
+  Box? get basket => repository!.basketBox;
+  Box? get favorite => repository!.favouredMealsBox;
 
   Future openHive() async {
     await Hive.openBox('basket');

@@ -6,11 +6,11 @@ import 'package:food_delivery_app/utils/network_error_util.dart';
 
 class SearchViewModel extends AppBaseViewModel {
   TextEditingController controller = new TextEditingController();
-  MealDetailListResponse mealList;
+  MealDetailListResponse? mealList;
 
   searchMeals(String ingredient) async {
     SearchRequest searchRequest = SearchRequest()..s = ingredient;
-    await repository.searchMealByName(searchRequest).then((mealList) {
+    await repository!.searchMealByName(searchRequest).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MealListItem extends StatelessWidget {
-  final String name;
-  final String url;
+  final String? name;
+  final String? url;
   const MealListItem({
-    Key key, this.name, this.url
+    Key? key, this.name, this.url
   }) : super(key: key);
 
   @override
@@ -24,7 +24,7 @@ class MealListItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Hero(
-                  tag: url,
+                  tag: url!,
                   child: Container(
                     height: 220,
                     width: 300,
@@ -34,7 +34,7 @@ class MealListItem extends StatelessWidget {
                         ),
                         image: DecorationImage(
                             fit: BoxFit.fitWidth,
-                            image: NetworkImage(url))),
+                            image: NetworkImage(url!))),
                   ),
                 ),
                 Padding(
@@ -42,7 +42,7 @@ class MealListItem extends StatelessWidget {
                   child: Container(
                     height: 45,
                     child: Text(
-                      name,
+                      name!,
                       maxLines: 2,
                       softWrap: true,
                       textAlign: TextAlign.start,

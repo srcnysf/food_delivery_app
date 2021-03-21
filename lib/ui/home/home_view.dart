@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/router.gr.dart';
@@ -13,6 +14,7 @@ import 'package:food_delivery_app/widgets/section_header.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../locator.dart';
+import 'home_view_model.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -38,7 +40,7 @@ class HomeView extends StatelessWidget {
                       actions: [
                         Stack(
                           children: [
-                            if (model.basket.length > 0)
+                            if (model.basket!.length > 0)
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
@@ -51,7 +53,7 @@ class HomeView extends StatelessWidget {
                                             BorderRadius.circular(45)),
                                     child: Center(
                                       child: Text(
-                                        model.repository.basketBox.length
+                                        model.repository!.basketBox!.length
                                             .toString(),
                                         style: TextStyle(color: Colors.white),
                                       ),
@@ -62,8 +64,7 @@ class HomeView extends StatelessWidget {
                             IconButton(
                                 icon: Icon(Icons.shopping_basket),
                                 onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, Routes.basketView);
+                                  AutoRouter.of(context).push(BasketView());
                                 }),
                           ],
                         )
@@ -77,16 +78,16 @@ class HomeView extends StatelessWidget {
                             SectionHeader(
                               title: "Near You",
                               onPressed: () {
-                                Navigator.pushNamed(context, Routes.nearView);
+                                AutoRouter.of(context).push(NearView());
                               },
                             ),
                             Container(
                               height: 350,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: model.mealList.meals.length > 10
+                                itemCount: model.mealList!.meals!.length > 10
                                     ? 10
-                                    : model.mealList.meals.length,
+                                    : model.mealList!.meals!.length,
                                 padding: EdgeInsets.all(4),
                                 itemBuilder: (context, index) {
                                   return OpenContainer(
@@ -101,17 +102,17 @@ class HomeView extends StatelessWidget {
                                     openBuilder: (context, action) {
                                       return DetailView(
                                           id: model
-                                              .mealList.meals[index].idMeal,
+                                              .mealList!.meals![index].idMeal,
                                           name: model
-                                              .mealList.meals[index].strMeal,
-                                          url: model.mealList.meals[index]
+                                              .mealList!.meals![index].strMeal,
+                                          url: model.mealList!.meals![index]
                                               .strMealThumb);
                                     },
                                     closedBuilder: (context, action) {
                                       return MealListItem(
                                           name: model
-                                              .mealList.meals[index].strMeal,
-                                          url: model.mealList.meals[index]
+                                              .mealList!.meals![index].strMeal,
+                                          url: model.mealList!.meals![index]
                                               .strMealThumb);
                                     },
                                   );
@@ -121,8 +122,7 @@ class HomeView extends StatelessWidget {
                             SectionHeader(
                               title: "Categories",
                               onPressed: () {
-                                Navigator.pushNamed(
-                                    context, Routes.categoriesView);
+                                AutoRouter.of(context).push(CategoriesView());
                               },
                             ),
                             Container(
@@ -130,9 +130,9 @@ class HomeView extends StatelessWidget {
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount:
-                                    model.categoryList.categories.length > 10
+                                    model.categoryList.categories!.length > 10
                                         ? 10
-                                        : model.categoryList.categories.length,
+                                        : model.categoryList.categories!.length,
                                 padding: EdgeInsets.all(4),
                                 itemBuilder: (context, index) {
                                   return OpenContainer(
@@ -147,19 +147,19 @@ class HomeView extends StatelessWidget {
                                     openBuilder: (context, action) {
                                       return CategoryDetailView(
                                           name: model.categoryList
-                                              .categories[index].strCategory);
+                                              .categories![index].strCategory);
                                     },
                                     closedBuilder: (context, action) {
                                       return CategoryItem(
                                           name: model.categoryList
-                                              .categories[index].strCategory,
+                                              .categories![index].strCategory,
                                           url: model
                                               .categoryList
-                                              .categories[index]
+                                              .categories![index]
                                               .strCategoryThumb,
                                           description: model
                                               .categoryList
-                                              .categories[index]
+                                              .categories![index]
                                               .strCategoryDescription);
                                     },
                                   );
@@ -186,7 +186,7 @@ class HomeView extends StatelessWidget {
                               height: 110,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: model.areaList.meals.length,
+                                itemCount: model.areaList.meals!.length,
                                 padding: EdgeInsets.all(4),
                                 itemBuilder: (context, index) {
                                   return OpenContainer(
@@ -201,12 +201,12 @@ class HomeView extends StatelessWidget {
                                     openBuilder: (context, action) {
                                       return AreaView(
                                           area: model
-                                              .areaList.meals[index].strArea);
+                                              .areaList.meals![index].strArea);
                                     },
                                     closedBuilder: (context, action) {
                                       return AreaListItem(
                                         name:
-                                            model.areaList.meals[index].strArea,
+                                            model.areaList.meals![index].strArea,
                                       );
                                     },
                                   );

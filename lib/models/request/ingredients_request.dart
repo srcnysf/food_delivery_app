@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 class IngredientsRequest {
-  String i;
+  String? i;
   IngredientsRequest({
     this.i,
   });
 
   IngredientsRequest copyWith({
-    String i,
+    String? i,
   }) {
     return IngredientsRequest(
       i: i ?? this.i,
@@ -20,7 +20,7 @@ class IngredientsRequest {
     };
   }
 
-  static IngredientsRequest fromMap(Map<String, dynamic> map) {
+  static IngredientsRequest? fromMap(Map<String, dynamic>? map) {
     if (map == null) return null;
   
     return IngredientsRequest(
@@ -30,7 +30,7 @@ class IngredientsRequest {
 
   String toJson() => json.encode(toMap());
 
-  static IngredientsRequest fromJson(String source) => fromMap(json.decode(source));
+  static IngredientsRequest? fromJson(String source) => fromMap(json.decode(source));
 
   @override
   String toString() => 'IngredientsRequest(i: $i)';

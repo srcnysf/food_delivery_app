@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AreaListItem extends StatelessWidget {
-  final String name;
+  final String? name;
   // final VoidCallback onPressed;
   const AreaListItem({
-    Key key,
+    Key? key,
     this.name,
     // this.onPressed,
   }) : super(key: key);
@@ -31,7 +31,7 @@ class AreaListItem extends StatelessWidget {
                     height: 50,
                     child: Center(
                       child: Text(
-                        name,
+                        name!,
                         maxLines: 2,
                         softWrap: true,
                         textAlign: TextAlign.start,

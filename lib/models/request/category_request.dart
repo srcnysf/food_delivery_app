@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 class CategoryRequest {
-  String c;
+  String? c;
   CategoryRequest({
     this.c,
   });
 
 
   CategoryRequest copyWith({
-    String c,
+    String? c,
   }) {
     return CategoryRequest(
       c: c ?? this.c,
@@ -21,7 +21,7 @@ class CategoryRequest {
     };
   }
 
-  static CategoryRequest fromMap(Map<String, dynamic> map) {
+  static CategoryRequest? fromMap(Map<String, dynamic>? map) {
     if (map == null) return null;
   
     return CategoryRequest(
@@ -31,7 +31,7 @@ class CategoryRequest {
 
   String toJson() => json.encode(toMap());
 
-  static CategoryRequest fromJson(String source) => fromMap(json.decode(source));
+  static CategoryRequest? fromJson(String source) => fromMap(json.decode(source));
 
   @override
   String toString() => 'CategoryRequest(c: $c)';

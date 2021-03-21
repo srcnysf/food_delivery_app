@@ -9,10 +9,10 @@ part of 'ingredient_item_response.dart';
 IngredientItemResponse _$IngredientItemResponseFromJson(
     Map<String, dynamic> json) {
   return IngredientItemResponse(
-    idIngredient: json['idIngredient'] as String,
-    strIngredient: json['strIngredient'] as String,
-    strDescription: json['strDescription'] as String,
-    strType: json['strType'] as String,
+    idIngredient: json['idIngredient'] as String?,
+    strIngredient: json['strIngredient'] as String?,
+    strDescription: json['strDescription'] as String?,
+    strType: json['strType'] as String?,
   );
 }
 

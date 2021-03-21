@@ -14,38 +14,38 @@ class DetailViewModel extends AppBaseViewModel {
   TextEditingController noteController = new TextEditingController();
   FocusNode focusNode = new FocusNode();
 
-  MealDetailListResponse mealList;
-  List<String> selectedAddsOnList;
-  List<String> selectedIngredients = new List();
+  MealDetailListResponse? mealList;
+  List<String>? selectedAddsOnList = [];
+  List<String?> selectedIngredients = [];
   String time = "In 1 Hour";
   Random random = new Random();
 
   int price = 10;
 
-  void initialize(String id) async {
+  void initialize(String? id) async {
     setBusy(true);
     await Hive.openBox('basket');
-    repository.setBasket(Hive.box('basket'));
+    repository!.setBasket(Hive.box('basket'));
     await Hive.openBox('favoured');
-    repository.setFavouredMeals(Hive.box('favoured'));
+    repository!.setFavouredMeals(Hive.box('favoured'));
     await getCategories(id);
     setBusy(false);
   }
 
-  getCategories(String id) async {
+  getCategories(String? id) async {
     MealRequest mealRequest = MealRequest()..i = id;
-    await repository.getMeal(mealRequest).then((meals) {
+    await repository!.getMeal(mealRequest).then((meals) {
       this.mealList = meals;
-      if (mealList.meals.first.strIngredient1 != null)
-        this.selectedIngredients.add(mealList.meals.first.strIngredient1);
-      if (mealList.meals.first.strIngredient2 != null)
-        this.selectedIngredients.add(mealList.meals.first.strIngredient2);
-      if (mealList.meals.first.strIngredient3 != null)
-        this.selectedIngredients.add(mealList.meals.first.strIngredient3);
-      if (mealList.meals.first.strIngredient4 != null)
-        this.selectedIngredients.add(mealList.meals.first.strIngredient4);
-      if (mealList.meals.first.strIngredient5 != null)
-        this.selectedIngredients.add(mealList.meals.first.strIngredient5);
+      if (mealList!.meals!.first.strIngredient1 != null)
+        this.selectedIngredients.add(mealList!.meals!.first.strIngredient1);
+      if (mealList!.meals!.first.strIngredient2 != null)
+        this.selectedIngredients.add(mealList!.meals!.first.strIngredient2);
+      if (mealList!.meals!.first.strIngredient3 != null)
+        this.selectedIngredients.add(mealList!.meals!.first.strIngredient3);
+      if (mealList!.meals!.first.strIngredient4 != null)
+        this.selectedIngredients.add(mealList!.meals!.first.strIngredient4);
+      if (mealList!.meals!.first.strIngredient5 != null)
+        this.selectedIngredients.add(mealList!.meals!.first.strIngredient5);
       notifyListeners();
     }).catchError((error) {
       setError(NetworkErrorUtil.handleError(error));
@@ -60,7 +60,7 @@ class DetailViewModel extends AppBaseViewModel {
   }
 
   setSelectedIngredients(List val) {
-    selectedIngredients = val.cast<String>();
+    selectedIngredients = val.cast<String?>();
     notifyListeners();
   }
 
@@ -70,14 +70,14 @@ class DetailViewModel extends AppBaseViewModel {
   }
 
   setFavourite(MealDetailResponse mMeal) {
-    if (favorite.containsKey(mMeal.idMeal)) {
-      favorite.delete(mMeal.idMeal);
+    if (favorite!.containsKey(mMeal.idMeal)) {
+      favorite!.delete(mMeal.idMeal);
     } else {
       Meal meal = new Meal();
       meal.id = mMeal.idMeal;
       meal.name = mMeal.strMeal;
       meal.url = mMeal.strMealThumb;
-      favorite.put(mMeal.idMeal, meal);
+      favorite!.put(mMeal.idMeal, meal);
     }
     notifyListeners();
   }
@@ -94,9 +94,9 @@ class DetailViewModel extends AppBaseViewModel {
     meal.desc = noteController.text;
     meal.count = 1;
 
-    basket.put("${mMeal.idMeal}", meal);
-    repository.setBasket(basket);
+    basket!.put("${mMeal.idMeal}", meal);
+    repository!.setBasket(basket);
     notifyListeners();
-    print(basket.length);
+    print(basket!.length);
   }
 }

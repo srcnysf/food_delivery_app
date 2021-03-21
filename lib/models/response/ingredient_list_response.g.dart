@@ -9,11 +9,9 @@ part of 'ingredient_list_response.dart';
 IngredientsListResponse _$IngredientsListResponseFromJson(
     Map<String, dynamic> json) {
   return IngredientsListResponse(
-    meals: (json['meals'] as List)
-        ?.map((e) => e == null
-            ? null
-            : IngredientItemResponse.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    meals: (json['meals'] as List<dynamic>?)
+        ?.map((e) => IngredientItemResponse.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

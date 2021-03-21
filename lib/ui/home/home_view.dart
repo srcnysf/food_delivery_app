@@ -2,7 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
-import 'package:food_delivery_app/router.gr.dart';
+import 'package:food_delivery_app/route/router.gr.dart';
 import 'package:food_delivery_app/ui/area/area_view.dart';
 import 'package:food_delivery_app/ui/category_detail/category_detail.dart';
 import 'package:food_delivery_app/ui/meal_detail/detail_view.dart';
@@ -13,7 +13,7 @@ import 'package:food_delivery_app/widgets/meal_item.dart';
 import 'package:food_delivery_app/widgets/section_header.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../locator.dart';
+import '../../di/locator.dart';
 import 'home_view_model.dart';
 
 class HomeView extends StatelessWidget {
@@ -205,8 +205,8 @@ class HomeView extends StatelessWidget {
                                     },
                                     closedBuilder: (context, action) {
                                       return AreaListItem(
-                                        name:
-                                            model.areaList.meals![index].strArea,
+                                        name: model
+                                            .areaList.meals![index].strArea,
                                       );
                                     },
                                   );

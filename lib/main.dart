@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/locator.dart';
-import 'package:food_delivery_app/router.gr.dart' as mRoute;
-import 'package:food_delivery_app/router.gr.dart';
+import 'package:food_delivery_app/di/locator.dart';
+import 'package:food_delivery_app/route/router.gr.dart';
 import 'package:hive/hive.dart';
 
 import 'constants/theme.dart';

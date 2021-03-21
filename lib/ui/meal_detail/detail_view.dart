@@ -5,8 +5,7 @@ import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/models/response/meal_response.dart';
 import 'package:smart_select/smart_select.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../router.gr.dart';
+import 'package:food_delivery_app/route/router.gr.dart';
 import 'detail_view_model.dart';
 
 class DetailView extends StatelessWidget {
@@ -36,8 +35,8 @@ class DetailView extends StatelessWidget {
                                     ? Icon(Icons.favorite)
                                     : Icon(Icons.favorite_border),
                                 onPressed: () {
-                                  model
-                                      .setFavourite(model.mealList!.meals!.first);
+                                  model.setFavourite(
+                                      model.mealList!.meals!.first);
                                 },
                               )
                             : Container()
@@ -194,7 +193,8 @@ class DetailView extends StatelessWidget {
                                           activeSubtitleStyle: TextStyle(
                                               color: Constants.primaryColor),
                                         )),
-                                        onChange: (dynamic val) => model.setTime(val),
+                                        onChange: (dynamic val) =>
+                                            model.setTime(val),
                                         modalType:
                                             SmartSelectModalType.bottomSheet),
                                     Padding(

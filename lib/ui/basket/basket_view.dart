@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/constants/constants.dart';
 import 'package:food_delivery_app/models/meal.dart';
-import 'package:food_delivery_app/router.gr.dart';
+import 'package:food_delivery_app/route/router.gr.dart';
 import 'package:food_delivery_app/ui/basket/basket_view_model.dart';
 import 'package:food_delivery_app/widgets/basket_meal_item.dart';
 import 'package:stacked/stacked.dart';

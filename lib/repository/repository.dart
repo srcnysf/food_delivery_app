@@ -12,7 +12,7 @@ import 'package:food_delivery_app/models/response/meal_list_response.dart';
 import 'package:food_delivery_app/services/api_service.dart';
 import 'package:hive/hive.dart';
 
-import '../locator.dart';
+import '../di/locator.dart';
 
 class Repository {
   final ApiService _apiService;

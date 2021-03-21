@@ -4,10 +4,10 @@ part 'category_response.g.dart';
 
 @JsonSerializable()
 class MealCategory {
-  final String idCategory;
-  final String strCategory;
-  final String strCategoryThumb;
-  final String strCategoryDescription;
+  final String? idCategory;
+  final String? strCategory;
+  final String? strCategoryThumb;
+  final String? strCategoryDescription;
   MealCategory({
     this.idCategory,
     this.strCategory,

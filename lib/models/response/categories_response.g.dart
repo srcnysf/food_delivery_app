@@ -8,10 +8,9 @@ part of 'categories_response.dart';
 
 Categories _$CategoriesFromJson(Map<String, dynamic> json) {
   return Categories(
-    categories: (json['categories'] as List)
-        ?.map((e) =>
-            e == null ? null : MealCategory.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    categories: (json['categories'] as List<dynamic>?)
+        ?.map((e) => MealCategory.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

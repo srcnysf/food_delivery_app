@@ -8,7 +8,7 @@ part of 'area_item_response.dart';
 
 AreaItemResponse _$AreaItemResponseFromJson(Map<String, dynamic> json) {
   return AreaItemResponse(
-    strArea: json['strArea'] as String,
+    strArea: json['strArea'] as String?,
   );
 }
 

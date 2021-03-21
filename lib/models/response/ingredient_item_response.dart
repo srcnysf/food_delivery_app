@@ -3,10 +3,10 @@ part 'ingredient_item_response.g.dart';
 
 @JsonSerializable()
 class IngredientItemResponse {
-  final String idIngredient;
-  final String strIngredient;
-  final String strDescription;
-  final String strType;
+  final String? idIngredient;
+  final String? strIngredient;
+  final String? strDescription;
+  final String? strType;
   IngredientItemResponse({
     this.idIngredient,
     this.strIngredient,

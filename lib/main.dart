@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/locator.dart';
 import 'package:food_delivery_app/router.gr.dart' as mRoute;
+import 'package:food_delivery_app/router.gr.dart';
 import 'package:hive/hive.dart';
 
 import 'constants/theme.dart';
@@ -16,13 +17,15 @@ main() async {
 }
 
 class MyApp extends StatelessWidget {
+  final appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerDelegate: appRouter.delegate(),
+      routeInformationParser: appRouter.defaultRouteParser(),
       theme: ThemeConst.light,
       darkTheme: ThemeConst.dark,
-      initialRoute: mRoute.Routes.splashView,
-      onGenerateRoute: mRoute.Router(),
     );
   }
 }

@@ -33,14 +33,14 @@ class SearchView extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5))),
                       ),
                     ),
-                    model.mealList == null || model.mealList.meals == null
+                    model.mealList == null || model.mealList!.meals == null
                         ? Center(
                             child: Text("No items to show"),
                           )
                         : Expanded(
                             child: ListView.builder(
                               scrollDirection: Axis.vertical,
-                              itemCount: model.mealList.meals.length,
+                              itemCount: model.mealList!.meals!.length,
                               padding: EdgeInsets.all(4),
                               itemBuilder: (context, index) {
                                 return OpenContainer(
@@ -53,17 +53,17 @@ class SearchView extends StatelessWidget {
                                       const Duration(milliseconds: 400),
                                   openBuilder: (context, action) {
                                     return DetailView(
-                                        id: model.mealList.meals[index].idMeal,
+                                        id: model.mealList!.meals![index].idMeal,
                                         name:
-                                            model.mealList.meals[index].strMeal,
-                                        url: model.mealList.meals[index]
+                                            model.mealList!.meals![index].strMeal,
+                                        url: model.mealList!.meals![index]
                                             .strMealThumb);
                                   },
                                   closedBuilder: (context, action) {
                                     return SearchListItem(
                                         name:
-                                            model.mealList.meals[index].strMeal,
-                                        url: model.mealList.meals[index]
+                                            model.mealList!.meals![index].strMeal,
+                                        url: model.mealList!.meals![index]
                                             .strMealThumb);
                                   },
                                 );

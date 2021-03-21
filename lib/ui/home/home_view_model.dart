@@ -12,15 +12,15 @@ import 'package:hive/hive.dart';
 import '../base/app_base_view_model.dart';
 
 class HomeViewModel extends AppBaseViewModel {
-  Categories categoryList;
-  AreaListReponse areaList;
-  MealListResponse mealList;
-  IngredientsListResponse ingredientList;
+  late Categories categoryList;
+  late AreaListReponse areaList;
+  MealListResponse? mealList;
+  IngredientsListResponse? ingredientList;
 
   void initialize() async {
     setBusy(true);
     await Hive.openBox('basket');
-    repository.setBasket(Hive.box('basket'));
+    repository!.setBasket(Hive.box('basket'));
     if (mealList == null) {
       await getCategories();
       await getAreaList("American");
@@ -32,7 +32,7 @@ class HomeViewModel extends AppBaseViewModel {
   }
 
   getCategories() async {
-    await repository.getCategories().then((categories) {
+    await repository!.getCategories().then((categories) {
       this.categoryList = categories;
       notifyListeners();
     }).catchError((error) {
@@ -42,7 +42,7 @@ class HomeViewModel extends AppBaseViewModel {
 
   getAreaList(String area) async {
     var areaRequest = AreaRequest()..a = area;
-    await repository.getAreaList(areaRequest).then((areaList) {
+    await repository!.getAreaList(areaRequest).then((areaList) {
       this.areaList = areaList;
       notifyListeners();
     }).catchError((error) {
@@ -52,7 +52,7 @@ class HomeViewModel extends AppBaseViewModel {
 
   getIngredientsList(String ingredient) async {
     var ingredientsRequest = IngredientsRequest()..i = ingredient;
-    await repository
+    await repository!
         .getIngredientsList(ingredientsRequest)
         .then((ingredientList) {
       this.ingredientList = ingredientList;
@@ -64,7 +64,7 @@ class HomeViewModel extends AppBaseViewModel {
 
   getMealsByCategory(String category) async {
     var categoryRequest = CategoryRequest()..c = category;
-    await repository.getMealsByCategory(categoryRequest).then((mealList) {
+    await repository!.getMealsByCategory(categoryRequest).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {
@@ -74,7 +74,7 @@ class HomeViewModel extends AppBaseViewModel {
 
   getMealsByArea(String area) async {
     var areaRequest = AreaRequest()..a = area;
-    await repository.getMealsByArea(areaRequest).then((mealList) {
+    await repository!.getMealsByArea(areaRequest).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {
@@ -84,7 +84,7 @@ class HomeViewModel extends AppBaseViewModel {
 
   getMealsByIngredients(String ingredients) async {
     var ingredientsRequest = IngredientsRequest()..i = ingredients;
-    await repository.getMealsByIngredients(ingredientsRequest).then((mealList) {
+    await repository!.getMealsByIngredients(ingredientsRequest).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {

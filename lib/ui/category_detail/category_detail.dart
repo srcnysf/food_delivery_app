@@ -8,9 +8,9 @@ import 'package:stacked/stacked.dart';
 import 'category_detail_view.dart';
 
 class CategoryDetailView extends StatelessWidget {
-  final String name;
+  final String? name;
 
-  const CategoryDetailView({Key key, this.name}) : super(key: key);
+  const CategoryDetailView({Key? key, this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<CategoryDetailViewModel>.reactive(
@@ -22,7 +22,7 @@ class CategoryDetailView extends StatelessWidget {
             : Scaffold(
                 appBar: AppBar(
                   title: Text(
-                    name,
+                    name!,
                     style: TextStyle(color: Constants.titleColor),
                   ),
                 ),
@@ -31,7 +31,7 @@ class CategoryDetailView extends StatelessWidget {
                     Expanded(
                       child: ListView.builder(
                         scrollDirection: Axis.vertical,
-                        itemCount: model.mealList.meals.length,
+                        itemCount: model.mealList!.meals!.length,
                         padding: EdgeInsets.all(4),
                         itemBuilder: (context, index) {
                           return OpenContainer(
@@ -44,16 +44,16 @@ class CategoryDetailView extends StatelessWidget {
                                 const Duration(milliseconds: 400),
                             openBuilder: (context, action) {
                               return DetailView(
-                                id: model.mealList.meals[index].idMeal,
-                                name: model.mealList.meals[index].strMeal,
-                                url: model.mealList.meals[index].strMealThumb,
+                                id: model.mealList!.meals![index].idMeal,
+                                name: model.mealList!.meals![index].strMeal,
+                                url: model.mealList!.meals![index].strMealThumb,
                               );
                             },
                             closedBuilder: (context, action) {
                               return SearchListItem(
-                                  name: model.mealList.meals[index].strMeal,
+                                  name: model.mealList!.meals![index].strMeal,
                                   url:
-                                      model.mealList.meals[index].strMealThumb);
+                                      model.mealList!.meals![index].strMealThumb);
                             },
                           );
                         },

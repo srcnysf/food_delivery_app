@@ -8,11 +8,9 @@ part of 'area_list_response.dart';
 
 AreaListReponse _$AreaListReponseFromJson(Map<String, dynamic> json) {
   return AreaListReponse(
-    meals: (json['meals'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AreaItemResponse.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    meals: (json['meals'] as List<dynamic>?)
+        ?.map((e) => AreaItemResponse.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

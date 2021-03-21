@@ -11,7 +11,7 @@ import 'package:stacked/stacked.dart';
 import 'main_view_model.dart';
 
 class MainView extends StatefulWidget {
-  const MainView({Key key}) : super(key: key);
+  const MainView({Key? key}) : super(key: key);
 
   @override
   _MainViewState createState() => _MainViewState();
@@ -76,7 +76,7 @@ class _MainViewState extends State<MainView> {
     );
   }
 
-  Widget getViewForIndex(int index) {
+  Widget? getViewForIndex(int index) {
     if (!_viewCache.containsKey(index)) {
       switch (index) {
         case 0:
@@ -97,7 +97,7 @@ class _MainViewState extends State<MainView> {
   }
 
   BottomNavigationBarItem _createNavItem(TabItem tabItem) {
-    final currenTab = TabItemData.tabs[tabItem];
+    final currenTab = TabItemData.tabs[tabItem]!;
     return BottomNavigationBarItem(
       icon: ImageIcon(
         AssetImage(currenTab.path),

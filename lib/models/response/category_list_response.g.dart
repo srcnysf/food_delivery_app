@@ -8,11 +8,10 @@ part of 'category_list_response.dart';
 
 CategoryListResponse _$CategoryListResponseFromJson(Map<String, dynamic> json) {
   return CategoryListResponse(
-    meals: (json['meals'] as List)
-        ?.map((e) => e == null
-            ? null
-            : MealCategoryItemResponse.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    meals: (json['meals'] as List<dynamic>?)
+        ?.map(
+            (e) => MealCategoryItemResponse.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

@@ -9,7 +9,7 @@ part of 'category_list_item_response.dart';
 MealCategoryItemResponse _$MealCategoryItemResponseFromJson(
     Map<String, dynamic> json) {
   return MealCategoryItemResponse(
-    strCategory: json['strCategory'] as String,
+    strCategory: json['strCategory'] as String?,
   );
 }
 

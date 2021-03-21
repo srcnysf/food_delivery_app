@@ -27,7 +27,7 @@ class NearView extends StatelessWidget {
                         Expanded(
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
-                            itemCount: model.mealList.meals.length,
+                            itemCount: model.mealList!.meals!.length,
                             padding: EdgeInsets.all(4),
                             itemBuilder: (context, index) {
                               return OpenContainer(
@@ -40,17 +40,17 @@ class NearView extends StatelessWidget {
                                     const Duration(milliseconds: 400),
                                 openBuilder: (context, action) {
                                   return DetailView(
-                                    id: model.mealList.meals[index].idMeal,
-                                    name: model.mealList.meals[index].strMeal,
+                                    id: model.mealList!.meals![index].idMeal,
+                                    name: model.mealList!.meals![index].strMeal,
                                     url: model
-                                        .mealList.meals[index].strMealThumb,
+                                        .mealList!.meals![index].strMealThumb,
                                   );
                                 },
                                 closedBuilder: (context, action) {
                                   return SearchListItem(
-                                      name: model.mealList.meals[index].strMeal,
+                                      name: model.mealList!.meals![index].strMeal,
                                       url: model
-                                          .mealList.meals[index].strMealThumb);
+                                          .mealList!.meals![index].strMealThumb);
                                 },
                               );
                             },

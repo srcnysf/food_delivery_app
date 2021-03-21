@@ -4,7 +4,7 @@ part 'category_list_item_response.g.dart';
 
 @JsonSerializable()
 class MealCategoryItemResponse {
-  final String strCategory;
+  final String? strCategory;
   MealCategoryItemResponse({
     this.strCategory,
   });

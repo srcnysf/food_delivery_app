@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:food_delivery_app/constants/api_constnts.dart';
 
 class NetworkUtil {
-  Dio _dio;
+  late Dio _dio;
 
   NetworkUtil() {
     BaseOptions options = BaseOptions(
@@ -13,7 +13,7 @@ class NetworkUtil {
     _dio.interceptors.add(LogInterceptor());
   }
 
-  Future<dynamic> get(String url, {Map<String, dynamic> params}) async {
+  Future<dynamic> get(String url, {Map<String, dynamic>? params}) async {
     try {
       Response response = await _dio.get(url,
           queryParameters: params,

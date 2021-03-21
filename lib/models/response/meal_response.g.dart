@@ -8,9 +8,9 @@ part of 'meal_response.dart';
 
 MealResponse _$MealResponseFromJson(Map<String, dynamic> json) {
   return MealResponse(
-    strMeal: json['strMeal'] as String,
-    strMealThumb: json['strMealThumb'] as String,
-    idMeal: json['idMeal'] as String,
+    strMeal: json['strMeal'] as String?,
+    strMealThumb: json['strMealThumb'] as String?,
+    idMeal: json['idMeal'] as String?,
   );
 }
 

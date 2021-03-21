@@ -4,9 +4,9 @@ part 'meal_response.g.dart';
 
 @JsonSerializable()
 class MealResponse {
-  final String strMeal;
-  final String strMealThumb;
-  final String idMeal;
+  final String? strMeal;
+  final String? strMealThumb;
+  final String? idMeal;
   MealResponse({
     this.strMeal,
     this.strMealThumb,

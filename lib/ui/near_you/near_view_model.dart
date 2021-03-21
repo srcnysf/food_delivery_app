@@ -10,12 +10,12 @@ import 'package:food_delivery_app/utils/network_error_util.dart';
 import 'package:hive/hive.dart';
 
 class NearViewModel extends AppBaseViewModel {
-  MealListResponse mealList;
+  MealListResponse? mealList;
 
   void initialize() async {
     setBusy(true);
     await Hive.openBox('basket');
-    repository.setBasket(Hive.box('basket'));
+    repository!.setBasket(Hive.box('basket'));
     if (mealList == null) {
       await getMealsByArea("American");
     }
@@ -25,7 +25,7 @@ class NearViewModel extends AppBaseViewModel {
 
   getMealsByArea(String area) async {
     var areaRequest = AreaRequest()..a = area;
-    await repository.getMealsByArea(areaRequest).then((mealList) {
+    await repository!.getMealsByArea(areaRequest).then((mealList) {
       this.mealList = mealList;
       notifyListeners();
     }).catchError((error) {

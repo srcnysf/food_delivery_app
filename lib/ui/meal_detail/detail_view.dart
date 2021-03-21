@@ -15,8 +15,6 @@ class DetailView extends StatelessWidget {
   const DetailView({Key key, this.url, this.name, this.id}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    FlutterToast flutterToast = FlutterToast(context);
-
     return ViewModelBuilder<DetailViewModel>.reactive(
         viewModelBuilder: () => DetailViewModel(),
         onModelReady: (model) => model.initialize(id),
@@ -221,7 +219,7 @@ class DetailView extends StatelessWidget {
                                       ),
                                     ),
                                     Center(
-                                      child: RaisedButton(
+                                      child: MaterialButton(
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(15)),
@@ -231,12 +229,11 @@ class DetailView extends StatelessWidget {
                                               model.time.isNotEmpty) {
                                             model.addToBasket(
                                                 model.mealList.meals.first);
-                                            flutterToast.showToast(
-                                              child: Container(
-                                                  child: Text("ItemAdded")),
+                                            Fluttertoast.showToast(
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              msg: "ItemAdded",
                                               gravity: ToastGravity.BOTTOM,
-                                              toastDuration:
-                                                  Duration(seconds: 2),
+                                              timeInSecForIosWeb: 1,
                                             );
                                             // Navigator.pop(context);
                                             Navigator.pushNamedAndRemoveUntil(

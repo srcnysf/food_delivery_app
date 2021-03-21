@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route_annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:food_delivery_app/ui/basket/basket_view.dart';
 import 'package:food_delivery_app/ui/categories/categories_view.dart';
 import 'package:food_delivery_app/ui/favoured/favoured_view.dart';
@@ -10,16 +10,17 @@ import 'package:food_delivery_app/ui/search/search_view.dart';
 import 'package:food_delivery_app/ui/splash/splash_view.dart';
 
 @MaterialAutoRouter(
+  replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    MaterialRoute(page: SplashView, initial: true),
-    MaterialRoute(page: MainView),
-    MaterialRoute(page: HomeView),
-    MaterialRoute(page: BasketView),
-    MaterialRoute(page: OrdersView),
-    MaterialRoute(page: SearchView),
-    MaterialRoute(page: FavouredView),
-    MaterialRoute(page: NearView),
-    MaterialRoute(page: CategoriesView),
+    AutoRoute(page: SplashView, initial: true),
+    AutoRoute(page: MainView),
+    AutoRoute(page: HomeView),
+    AutoRoute(page: BasketView),
+    AutoRoute(page: OrdersView),
+    AutoRoute(page: SearchView),
+    AutoRoute(page: FavouredView),
+    AutoRoute(page: NearView),
+    AutoRoute(page: CategoriesView),
   ],
 )
-class $Router {}
+class $AppRouter {}

@@ -13,6 +13,7 @@ import 'package:food_delivery_app/widgets/section_header.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../locator.dart';
+import 'home_view_model.dart';
 
 class HomeView extends StatelessWidget {
   @override

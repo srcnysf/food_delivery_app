@@ -9,6 +9,8 @@ import 'package:food_delivery_app/ui/base/app_base_view_model.dart';
 import 'package:food_delivery_app/utils/network_error_util.dart';
 import 'package:hive/hive.dart';
 
+import '../base/app_base_view_model.dart';
+
 class HomeViewModel extends AppBaseViewModel {
   Categories categoryList;
   AreaListReponse areaList;

@@ -68,192 +68,199 @@ class DetailView extends StatelessWidget {
                       ),
                     ),
                     SliverFillRemaining(
+                      hasScrollBody: false,
                       child: model.isBusy
                           ? Center(child: CircularProgressIndicator())
                           : model.hasError
                               ? Text(model.modelError.toString())
-                              : Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SmartSelect.multiple(
-                                        trailing: Icon(Icons.add),
-                                        modalConfig: SmartSelectModalConfig(
-                                            style: SmartSelectModalStyle()),
-                                        value: model.selectedIngredients,
-                                        enabled: true,
-                                        title: "Ingredients",
-                                        options: <SmartSelectOption<String?>>[
-                                          if (model.mealList!.meals!.first
-                                                  .strIngredient1 !=
-                                              null)
-                                            SmartSelectOption<String?>(
-                                                value: model.mealList!.meals!
-                                                    .first.strIngredient1,
-                                                title: model.mealList!.meals!
-                                                    .first.strIngredient1!),
-                                          if (model.mealList!.meals!.first
-                                                  .strIngredient2 !=
-                                              null)
-                                            SmartSelectOption<String?>(
-                                                value: model.mealList!.meals!
-                                                    .first.strIngredient2,
-                                                title: model.mealList!.meals!
-                                                    .first.strIngredient2!),
-                                          if (model.mealList!.meals!.first
-                                                  .strIngredient3 !=
-                                              null)
-                                            SmartSelectOption<String?>(
-                                                value: model.mealList!.meals!
-                                                    .first.strIngredient3,
-                                                title: model.mealList!.meals!
-                                                    .first.strIngredient3!),
-                                          if (model.mealList!.meals!.first
-                                                  .strIngredient4 !=
-                                              null)
-                                            SmartSelectOption<String?>(
-                                                value: model.mealList!.meals!
-                                                    .first.strIngredient4,
-                                                title: model.mealList!.meals!
-                                                    .first.strIngredient4!),
-                                          if (model.mealList!.meals!.first
-                                                  .strIngredient5 !=
-                                              null)
-                                            SmartSelectOption<String?>(
-                                                value: model.mealList!.meals!
-                                                    .first.strIngredient5,
-                                                title: model.mealList!.meals!
-                                                    .first.strIngredient5!),
-                                        ],
-                                        choiceConfig: SmartSelectChoiceConfig(
-                                            style: SmartSelectChoiceStyle(
-                                          activeColor: Constants.primaryColor,
-                                          activeTitleStyle: TextStyle(
-                                              color: Constants.primaryColor),
-                                          activeSubtitleStyle: TextStyle(
-                                              color: Constants.primaryColor),
-                                        )),
-                                        onChange: (val) =>
-                                            model.setSelectedIngredients(val),
-                                        modalType:
-                                            SmartSelectModalType.bottomSheet),
-                                    SmartSelect.multiple(
-                                        trailing: Icon(Icons.add),
-                                        modalConfig: SmartSelectModalConfig(
-                                            style: SmartSelectModalStyle()),
-                                        value: model.selectedAddsOnList!,
-                                        title: "Adds On",
-                                        options: <SmartSelectOption<String>>[
-                                          SmartSelectOption<String>(
-                                              value: "Mayoniese",
-                                              title: "Mayoniese +1\$"),
-                                          SmartSelectOption<String>(
-                                              value: "Soy Sauce",
-                                              title: "Soy Sauce +2\$"),
-                                          SmartSelectOption<String>(
-                                              value: "Cheddar Cheese",
-                                              title: "Cheddar Cheese +3\$"),
-                                          SmartSelectOption<String>(
-                                              value: "Salt", title: "Salt"),
-                                        ],
-                                        choiceConfig: SmartSelectChoiceConfig(
-                                            style: SmartSelectChoiceStyle(
-                                          activeColor: Constants.primaryColor,
-                                          activeTitleStyle: TextStyle(
-                                              color: Constants.primaryColor),
-                                          activeSubtitleStyle: TextStyle(
-                                              color: Constants.primaryColor),
-                                        )),
-                                        onChange: (val) =>
-                                            model.setSelectedAddsOnList(val),
-                                        modalType:
-                                            SmartSelectModalType.bottomSheet),
-                                    SmartSelect.single(
-                                        trailing: Icon(Icons.add),
-                                        modalConfig: SmartSelectModalConfig(
-                                            style: SmartSelectModalStyle()),
-                                        dense: false,
-                                        value: model.time,
-                                        title: "When",
-                                        options: <SmartSelectOption<String>>[
-                                          SmartSelectOption<String>(
-                                              value: "In 1 Hour",
-                                              title: 'In 1 Hour'),
-                                          SmartSelectOption<String>(
-                                              value: "In 2 Hours",
-                                              title: 'In 2 Hours'),
-                                          SmartSelectOption<String>(
-                                              value: "In 3 Hours",
-                                              title: 'In 3 Hours'),
-                                        ],
-                                        choiceConfig: SmartSelectChoiceConfig(
-                                            style: SmartSelectChoiceStyle(
-                                          activeColor: Constants.primaryColor,
-                                          activeTitleStyle: TextStyle(
-                                              color: Constants.primaryColor),
-                                          activeSubtitleStyle: TextStyle(
-                                              color: Constants.primaryColor),
-                                        )),
-                                        onChange: (dynamic val) =>
-                                            model.setTime(val),
-                                        modalType:
-                                            SmartSelectModalType.bottomSheet),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 16.0, top: 8, bottom: 8),
-                                      child: Text("Order Note",
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(fontSize: 16)),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 16),
-                                      child: TextField(
-                                        focusNode: model.focusNode,
-                                        controller: model.noteController,
-                                        maxLines: 5,
-                                        maxLength: 200,
-                                        decoration: InputDecoration(
-                                            hintText: "Please write your note",
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5))),
+                              : Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SmartSelect.multiple(
+                                          trailing: Icon(Icons.add),
+                                          modalConfig: SmartSelectModalConfig(
+                                              style: SmartSelectModalStyle()),
+                                          value: model.selectedIngredients,
+                                          enabled: true,
+                                          title: "Ingredients",
+                                          options: <SmartSelectOption<String?>>[
+                                            if (model.mealList!.meals!.first
+                                                    .strIngredient1 !=
+                                                null)
+                                              SmartSelectOption<String?>(
+                                                  value: model.mealList!.meals!
+                                                      .first.strIngredient1,
+                                                  title: model.mealList!.meals!
+                                                      .first.strIngredient1!),
+                                            if (model.mealList!.meals!.first
+                                                    .strIngredient2 !=
+                                                null)
+                                              SmartSelectOption<String?>(
+                                                  value: model.mealList!.meals!
+                                                      .first.strIngredient2,
+                                                  title: model.mealList!.meals!
+                                                      .first.strIngredient2!),
+                                            if (model.mealList!.meals!.first
+                                                    .strIngredient3 !=
+                                                null)
+                                              SmartSelectOption<String?>(
+                                                  value: model.mealList!.meals!
+                                                      .first.strIngredient3,
+                                                  title: model.mealList!.meals!
+                                                      .first.strIngredient3!),
+                                            if (model.mealList!.meals!.first
+                                                    .strIngredient4 !=
+                                                null)
+                                              SmartSelectOption<String?>(
+                                                  value: model.mealList!.meals!
+                                                      .first.strIngredient4,
+                                                  title: model.mealList!.meals!
+                                                      .first.strIngredient4!),
+                                            if (model.mealList!.meals!.first
+                                                    .strIngredient5 !=
+                                                null)
+                                              SmartSelectOption<String?>(
+                                                  value: model.mealList!.meals!
+                                                      .first.strIngredient5,
+                                                  title: model.mealList!.meals!
+                                                      .first.strIngredient5!),
+                                          ],
+                                          choiceConfig: SmartSelectChoiceConfig(
+                                              style: SmartSelectChoiceStyle(
+                                            activeColor: Constants.primaryColor,
+                                            activeTitleStyle: TextStyle(
+                                                color: Constants.primaryColor),
+                                            activeSubtitleStyle: TextStyle(
+                                                color: Constants.primaryColor),
+                                          )),
+                                          onChange: (val) =>
+                                              model.setSelectedIngredients(val),
+                                          modalType:
+                                              SmartSelectModalType.bottomSheet),
+                                      SmartSelect.multiple(
+                                          trailing: Icon(Icons.add),
+                                          modalConfig: SmartSelectModalConfig(
+                                              style: SmartSelectModalStyle()),
+                                          value: model.selectedAddsOnList!,
+                                          title: "Adds On",
+                                          options: <SmartSelectOption<String>>[
+                                            SmartSelectOption<String>(
+                                                value: "Mayoniese",
+                                                title: "Mayoniese +1\$"),
+                                            SmartSelectOption<String>(
+                                                value: "Soy Sauce",
+                                                title: "Soy Sauce +2\$"),
+                                            SmartSelectOption<String>(
+                                                value: "Cheddar Cheese",
+                                                title: "Cheddar Cheese +3\$"),
+                                            SmartSelectOption<String>(
+                                                value: "Salt", title: "Salt"),
+                                          ],
+                                          choiceConfig: SmartSelectChoiceConfig(
+                                              style: SmartSelectChoiceStyle(
+                                            activeColor: Constants.primaryColor,
+                                            activeTitleStyle: TextStyle(
+                                                color: Constants.primaryColor),
+                                            activeSubtitleStyle: TextStyle(
+                                                color: Constants.primaryColor),
+                                          )),
+                                          onChange: (val) =>
+                                              model.setSelectedAddsOnList(val),
+                                          modalType:
+                                              SmartSelectModalType.bottomSheet),
+                                      SmartSelect.single(
+                                          trailing: Icon(Icons.add),
+                                          modalConfig: SmartSelectModalConfig(
+                                              style: SmartSelectModalStyle()),
+                                          dense: false,
+                                          value: model.time,
+                                          title: "When",
+                                          options: <SmartSelectOption<String>>[
+                                            SmartSelectOption<String>(
+                                                value: "In 1 Hour",
+                                                title: 'In 1 Hour'),
+                                            SmartSelectOption<String>(
+                                                value: "In 2 Hours",
+                                                title: 'In 2 Hours'),
+                                            SmartSelectOption<String>(
+                                                value: "In 3 Hours",
+                                                title: 'In 3 Hours'),
+                                          ],
+                                          choiceConfig: SmartSelectChoiceConfig(
+                                              style: SmartSelectChoiceStyle(
+                                            activeColor: Constants.primaryColor,
+                                            activeTitleStyle: TextStyle(
+                                                color: Constants.primaryColor),
+                                            activeSubtitleStyle: TextStyle(
+                                                color: Constants.primaryColor),
+                                          )),
+                                          onChange: (dynamic val) =>
+                                              model.setTime(val),
+                                          modalType:
+                                              SmartSelectModalType.bottomSheet),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 16.0, top: 8, bottom: 8),
+                                        child: Text("Order Note",
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(fontSize: 16)),
                                       ),
-                                    ),
-                                    Center(
-                                      child: MaterialButton(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        color: Constants.primaryColor,
-                                        onPressed: () {
-                                          if (model.time != null &&
-                                              model.time.isNotEmpty) {
-                                            model.addToBasket(
-                                                model.mealList!.meals!.first);
-                                            Fluttertoast.showToast(
-                                              toastLength: Toast.LENGTH_SHORT,
-                                              msg: "ItemAdded",
-                                              gravity: ToastGravity.BOTTOM,
-                                              timeInSecForIosWeb: 1,
-                                            );
-                                            AutoRouter.of(context)
-                                                .pushAndRemoveUntil(MainView(),
-                                                    predicate: (Route<dynamic>
-                                                            route) =>
-                                                        false);
-                                          }
-                                        },
-                                        child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                2,
-                                            child: Center(
-                                                child: Text(
-                                                    "Add to Basket ${model.price}\$"))),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
+                                        child: TextField(
+                                          focusNode: model.focusNode,
+                                          controller: model.noteController,
+                                          maxLines: 5,
+                                          maxLength: 200,
+                                          decoration: InputDecoration(
+                                              hintText:
+                                                  "Please write your note",
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5))),
+                                        ),
                                       ),
-                                    )
-                                  ],
+                                      Center(
+                                        child: MaterialButton(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          color: Constants.primaryColor,
+                                          onPressed: () {
+                                            if (model.time != null &&
+                                                model.time.isNotEmpty) {
+                                              model.addToBasket(
+                                                  model.mealList!.meals!.first);
+                                              Fluttertoast.showToast(
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                msg: "ItemAdded",
+                                                gravity: ToastGravity.BOTTOM,
+                                                timeInSecForIosWeb: 1,
+                                              );
+                                              AutoRouter.of(context)
+                                                  .pushAndRemoveUntil(
+                                                      MainView(),
+                                                      predicate: (Route<dynamic>
+                                                              route) =>
+                                                          false);
+                                            }
+                                          },
+                                          child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  2,
+                                              child: Center(
+                                                  child: Text(
+                                                      "Add to Basket ${model.price}\$"))),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                     )
                   ],

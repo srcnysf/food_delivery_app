@@ -34,8 +34,10 @@ class SearchView extends StatelessWidget {
                       ),
                     ),
                     model.mealList == null || model.mealList!.meals == null
-                        ? Center(
-                            child: Text("No items to show"),
+                        ? Expanded(
+                            child: Center(
+                              child: Text("No items to show"),
+                            ),
                           )
                         : Expanded(
                             child: ListView.builder(
@@ -53,16 +55,17 @@ class SearchView extends StatelessWidget {
                                       const Duration(milliseconds: 400),
                                   openBuilder: (context, action) {
                                     return DetailView(
-                                        id: model.mealList!.meals![index].idMeal,
-                                        name:
-                                            model.mealList!.meals![index].strMeal,
+                                        id: model
+                                            .mealList!.meals![index].idMeal,
+                                        name: model
+                                            .mealList!.meals![index].strMeal,
                                         url: model.mealList!.meals![index]
                                             .strMealThumb);
                                   },
                                   closedBuilder: (context, action) {
                                     return SearchListItem(
-                                        name:
-                                            model.mealList!.meals![index].strMeal,
+                                        name: model
+                                            .mealList!.meals![index].strMeal,
                                         url: model.mealList!.meals![index]
                                             .strMealThumb);
                                   },

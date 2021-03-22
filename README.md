@@ -8,19 +8,19 @@ Endpoind:[MealDB](https://www.themealdb.com)
 
 ## Tech stack
 
-# Network
+### Network
 * [Dio](https://pub.dev/packages/dio)
 * [Retrofit](https://pub.dev/packages/retrofit)
 * [Connectivity](https://pub.dev/packages/connectivity)
-# State Manangement
+### State Manangement
 * [stacked](https://pub.dev/packages/stacked)
-# Dependency Injection
+### Dependency Injection
 * [get_it](https://pub.dev/packages/get_it)
-# Routing
+### Routing
 * [auto_route](https://pub.dev/packages/auto_route)
-# Animations
+### Animations
 * [animations](https://pub.dev/packages/animations)
-# Local DB
+### Local DB
 * [Hive](https://pub.dev/packages/hive)
 
 

@@ -25,7 +25,7 @@ Endpoind:[MealDB](https://www.themealdb.com)
 
 
 ## Screenshots 📷
-<img src="/screenshots/1.png" width="260"> &emsp;<img src="/screenshots/w.png" width="260"> &emsp;<img src="/screenshots/3.png" width="260"> &emsp;<img src="/screenshots/4.png" width="260"> &emsp;<img src="/screenshots/5.png" width="260">
+<img src="/screenshots/1.png" width="260"> &emsp;<img src="/screenshots/2.png" width="260"> &emsp;<img src="/screenshots/3.png" width="260"> &emsp;<img src="/screenshots/4.png" width="260"> &emsp;<img src="/screenshots/5.png" width="260">
 
 ## Pros ✅
 * Modern architecture based on MVVM

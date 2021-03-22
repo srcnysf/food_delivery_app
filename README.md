@@ -40,3 +40,4 @@ Endpoind:[MealDB](https://www.themealdb.com)
 * Error management improvements
 * Localization Support
 * Adding multiple Flavors
+* Web & Desktop Support

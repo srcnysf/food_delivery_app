@@ -1,26 +1,42 @@
-# food_delivery_app
+## Food Delivery App 🍝
 
-Food Delivery App POC App Developed with Flutter.
+Food Delivery POC App Developed with Flutter.
 
 Migrated Flutter 2.0 Null-Safety
 
-# Dependencies
+Endpoind:[MealDB](https://www.themealdb.com) 
 
-## Network
-- [Dio](https://pub.dev/packages/dio)
-- [Retrofit](https://pub.dev/packages/retrofit)
+## Tech stack
 
-## State Manangement
-- [stacked](https://pub.dev/packages/stacked)
+# Network
+* [Dio](https://pub.dev/packages/dio)
+* [Retrofit](https://pub.dev/packages/retrofit)
+* [Connectivity](https://pub.dev/packages/connectivity)
+# State Manangement
+* [stacked](https://pub.dev/packages/stacked)
+# Dependency Injection
+* [get_it](https://pub.dev/packages/get_it)
+# Routing
+* [auto_route](https://pub.dev/packages/auto_route)
+# Animations
+* [animations](https://pub.dev/packages/animations)
+# Local DB
+* [Hive](https://pub.dev/packages/hive)
 
-## Dependency Injection
-- [get_it](https://pub.dev/packages/get_it)
 
-## Routing
-- [auto_route](https://pub.dev/packages/auto_route)
+## Screenshots 📷
+<img src="/screenshots/1.png" width="260"> &emsp;<img src="/screenshots/w.png" width="260"> &emsp;<img src="/screenshots/3.png" width="260"> &emsp;<img src="/screenshots/4.png" width="260"> &emsp;<img src="/screenshots/5.png" width="260">
 
-## Animations
-- [animations](https://pub.dev/packages/animations)
+## Pros ✅
+* Modern architecture based on MVVM
+* Readable and scalable codebase
+* Native animations and transitions
+* Responsive layout design, vertical and horizontal usage
+* Good state handling
+* Local storage & Cache
+* Dark theme
 
-## Local DB
-- [Hive](https://pub.dev/packages/hive)
+## Improvement points 📌
+* Error management improvements
+* Localization Support
+* Adding multiple Flavors
